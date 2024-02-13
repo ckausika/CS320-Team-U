@@ -6,4 +6,5 @@ Shrey Bahadur,
 Chandni Kausika,
 Dongpei Zhang,
 Srihari Srivatsa,
-Aymaan Shaikh
+Aymaan Shaikh,
+Michaela Gay,
