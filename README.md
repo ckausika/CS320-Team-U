@@ -5,4 +5,5 @@ Names:
 Shrey Bahadur,
 Chandni Kausika,
 Dongpei Zhang,
-Srihari Srivatsa
+Srihari Srivatsa,
+Aymaan Shaikh
