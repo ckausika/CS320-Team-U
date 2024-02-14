@@ -8,3 +8,6 @@ Dongpei Zhang,
 Srihari Srivatsa,
 Aymaan Shaikh,
 Michaela Gay,
+
+Manager:
+Pablo Almeida
