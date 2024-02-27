@@ -8,6 +8,7 @@ Dongpei Zhang,
 Srihari Srivatsa,
 Aymaan Shaikh,
 Michaela Gay,
+Attila Palabiyik
 
 Manager:
 Pablo Almeida
