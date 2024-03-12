@@ -11,5 +11,5 @@ Michaela Gay,
 Attila Palabiyik,
 Marco Diaz Moore
 
-Manager:
+Manager:  
 Pablo Almeida
