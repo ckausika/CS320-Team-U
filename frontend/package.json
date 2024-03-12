@@ -1,0 +1,22 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "A web application that allows undergraduate students and professors to connect for research opportunities at UMass Amherst.",
+  "main": "index.js",
+  "scripts": {
+    "test": "ng"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckausika/CS320-Team-U.git"
+  },
+  "author": "team-u",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ckausika/CS320-Team-U/issues"
+  },
+  "homepage": "https://github.com/ckausika/CS320-Team-U#readme",
+  "dependencies": {
+    "angular": "^1.8.3"
+  }
+}
