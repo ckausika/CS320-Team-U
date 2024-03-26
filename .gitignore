@@ -1,1 +1,2 @@
+# Ignores python cache file created when running the Flask server
 backend/__pycache__/
