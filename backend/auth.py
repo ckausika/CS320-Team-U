@@ -21,5 +21,9 @@
 #    and compare it to hashed version in the DB. If good match, go ahead with whatever
 #    data retrieval that is requested.
 #
+# 7. Create logout function. Receive token from the client and hash it and then
+#    compare it to the one stored in the database. If match, erase that client's
+#    stored, hashed token from the DB so it can not be used to log in again.
+#
 # Required stored data for each account's authentication
 # [USERNAME, HASHED PASSWORD, HASHED TOKEN]
