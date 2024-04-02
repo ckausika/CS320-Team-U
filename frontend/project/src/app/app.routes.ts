@@ -17,13 +17,13 @@ export const routes: Routes = [
         component: LoginPageComponent
     },
     {
-        path: '**',
-        title: 'Page Not Found',
-        component: PageNotFoundComponent
-    },
-    {
         path: 'research',
         title: 'Research Page',
         component: ResearchPageComponent
+    },
+    {
+        path: '**',
+        title: 'Page Not Found',
+        component: PageNotFoundComponent
     },
 ];
