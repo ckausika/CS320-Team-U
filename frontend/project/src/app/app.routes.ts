@@ -20,4 +20,10 @@ export const routes: Routes = [
         title: 'Page Not Found',
         component: PageNotFoundComponent
     },
+    {
+        path: 'research',
+        title: 'Research Page',
+        component: PageNotFoundComponent
+    },
+    
 ];
