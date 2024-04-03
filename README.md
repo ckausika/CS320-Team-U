@@ -27,7 +27,7 @@ TBD
 Our project's web server is built with Python and the Flask Web Framework. The web server handles API endpoint routing as well as the site's authentication system and any data retrieval from the project's database.
 
 ### Web Scraper
-TBD
+Our python program scrapes results from several publically available Manning CICS webpages for information about faculty, labs, research areas and ongoing research projects.  
 
 ### Database
 MongoDB Atlas Database | Multi-Cloud Database Service
