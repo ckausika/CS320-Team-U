@@ -30,4 +30,4 @@ Our project's web server is built with Python and the Flask Web Framework. The w
 TBD
 
 ### Database
-TBD
+MongoDB Atlas Database | Multi-Cloud Database Service
