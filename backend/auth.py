@@ -28,9 +28,9 @@
 # Required stored data for each account's authentication
 # [USERNAME, HASHED PASSWORD, HASHED TOKEN]
 
-import argon2 from PasswordHasher
+from argon2 import PasswordHasher
 
-ph = passwordHasher() # Argon 2 hashing object
+ph = PasswordHasher() # Argon 2 hashing object
 
 # FUNCTION: determineHashMatch
 # Given a username, input, and data type, search for a hash
@@ -40,31 +40,34 @@ ph = passwordHasher() # Argon 2 hashing object
 # Output: Boolean (Success/Failure)
 #
 
-def determineHashMatch(user, unhashedInput, type)
+def determineHashMatch(user, unhashedInput, type):
     if type == 'Password':
         # Get stored password hash of user from the DB
         #storedPasswordHash = ?
 
         # Compare unhashed target to the stored password
         #return ph.verify(storedPasswordHash, target)
-    elif type == 'Token':
+    #elif type == 'Token':
         # Get stored token hash of user from the DB
         #storedTokenHash = ?
 
         # Compare unhashed target to the stored token
         #return ph.verify(storedTokenHash, target)
-    else:
+    #else:
         return False # An unknown type was given to the function
 
 # Create an account given a username and password
 def accountCreate(username, password):
-    # Check if account with that username already exists
-    return false
+    # If username in DB already exists then return False
+
+    
+    print("acc create ran")
+    return False
 
 # Login to an account given a username and password
 def accountLogin(username, password):
-    return false
+    return False
 
 # Perform an authentication request given a token
 def authConnect(token):
-    return false
+    return False
