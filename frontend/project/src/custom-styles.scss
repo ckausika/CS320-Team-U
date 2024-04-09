@@ -1,0 +1,34 @@
+$mat-primary: (
+  main: #8a1818,
+  lighter: #dcbaba,
+  darker: #6d0e0e,
+  200: #8a1818, // For slide toggle,
+  contrast : (
+    main: $light-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$theme-primary: mat-palette($mat-primary, main, lighter, darker);
+
+
+body {
+  --accent-color: #fcebc1;
+  --accent-lighter-color: #fef9ec;
+  --accent-darker-color: #fbe2ab;
+  --text-accent-color: #{$dark-primary-text};
+  --text-accent-lighter-color: #{$dark-primary-text};
+  --text-accent-darker-color: #{$dark-primary-text};
+}   
+$mat-accent: (
+  main: #fcebc1,
+  lighter: #fef9ec,
+  darker: #fbe2ab,
+  200: #fcebc1, // For slide toggle,
+  contrast : (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $dark-primary-text,
+  )
+);
+$theme-accent: mat-palette($mat-accent, main, lighter, darker);
