@@ -131,7 +131,7 @@ def main():
     
     print("TOTAL PROFS: ", len(profs))
 
-    writeToCSV("scraper_results.csv")
+    writeToCSV("faculty.csv")
 
 if __name__ == "__main__":
     main()

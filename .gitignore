@@ -1,2 +1,5 @@
 # Ignores python cache file created when running the Flask server
 backend/__pycache__/
+
+# Ignores python virtual environment
+backend/.venv/
