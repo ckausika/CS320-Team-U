@@ -1,14 +1,33 @@
 # The flask server can be ran with the following commands:
 #
+# python -m venv backend/.venv
+# cd backend
+# pip install -r requirements.txt
 # .venv\Scripts\activate
 # flask --app app run
 #
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 from markupsafe import escape # escape used to prevent injection via user input
 from auth import accountCreate
 
 app = Flask(__name__)
+
+#  {
+#      Status: "Success"
+#  }, 200
+
+
+# Status Endpoint
+@app.route("/")
+def statusEndpoint():
+    responseData = {
+        "Status": "Success"
+    }
+    
+    return jsonify(responseData), 200
+
+    #return Response(responseData, mimetype='application/json', status=200, headers={"Access-Control-Allow-Origin": "*"})
 
 # Handle all Auth API endpoint routing
 @app.route("/api/auth/<endpoint>")
