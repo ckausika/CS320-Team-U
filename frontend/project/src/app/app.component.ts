@@ -1,28 +1,28 @@
 import { Component } from '@angular/core';
 import { RouterOutlet, RouterLink, Router, NavigationEnd } from '@angular/router';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgIf, RouterOutlet, RouterLink, MatButtonModule, MatDividerModule, MatIconModule],
+  imports: [NgIf, RouterOutlet, RouterLink, MatToolbarModule, MatButtonModule, MatDividerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'research-finder';
-  showNavbar: boolean;
+  showHeader: boolean;
 
   constructor(private router: Router) {
-    this.showNavbar = this.router.url !== '/login';
+    this.showHeader = this.router.url !== '/login';
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.showNavbar = event.url !== '/login';
+        this.showHeader = event.url !== '/login';
       }
     });
   }
