@@ -1,5 +1,5 @@
 <main class="main">
-  <div class="content">
+  <div *ngIf="showNavbar" class="navbar">
     <button mat-icon-button routerLink="/">
       <mat-icon>home</mat-icon>
     </button>
@@ -7,9 +7,8 @@
       <mat-icon>login</mat-icon>
     </button>
     <button mat-icon-button routerLink="/research">
-      <mat-icon>login</mat-icon>
+      <mat-icon>science</mat-icon>
     </button>
-    <mat-divider></mat-divider>
-    <router-outlet />    
   </div>
+  <router-outlet />    
 </main>
