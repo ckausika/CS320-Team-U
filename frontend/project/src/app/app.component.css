@@ -1,4 +1,8 @@
 .main {
+    display: block;
+}
+
+.navbar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
