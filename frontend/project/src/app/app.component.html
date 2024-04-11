@@ -1,14 +1,25 @@
 <main class="main">
-  <div *ngIf="showNavbar" class="navbar">
-    <button mat-icon-button routerLink="/">
-      <mat-icon>home</mat-icon>
-    </button>
-    <button mat-icon-button routerLink="/login">
-      <mat-icon>login</mat-icon>
-    </button>
-    <button mat-icon-button routerLink="/research">
-      <mat-icon>science</mat-icon>
-    </button>
-  </div>
+  <mat-toolbar *ngIf="showHeader">
+    <mat-toolbar-row class="title">
+      CICS Undergrad Research Finder
+    </mat-toolbar-row>
+    <mat-toolbar-row class="navbar">
+      <button mat-button routerLink="/">
+        Home
+      </button>
+      <button mat-button routerLink="/research">
+        Research
+      </button>
+      <button mat-button routerLink="/">
+        Professor
+      </button>
+      <button mat-button routerLink="/">
+        Application
+      </button>
+      <button mat-button routerLink="/login">
+        Log out
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
   <router-outlet />    
 </main>

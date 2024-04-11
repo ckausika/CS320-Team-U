@@ -2,7 +2,12 @@
     display: block;
 }
 
+.title {
+    color: black;
+    background-color: white;
+    padding-left: 23px;
+}
+
 .navbar {
-    display: flex;
-    flex-direction: row;
+    background-color: #940a00;
 }
