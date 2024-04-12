@@ -1,6 +1,5 @@
 body{
-  padding-left: 100px;
-  padding-right: 100px;
+
 }
 .nav{
     width: 100%;
@@ -36,11 +35,19 @@ body{
     font-size: 20px;
     line-height: 2;
 }
-
 .about img{
     width: 800px;
 }
-
 .paragraph{
     display:flex;
+}
+.info{
+    background-color: #891D1D;
+    height: 150px;
+    width: 100%;
+    display:flex;
+}
+
+.info img{
+    height: 150px;
 }
