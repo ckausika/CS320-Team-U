@@ -39,22 +39,33 @@ def get_research_area_by_name(name: str) -> dict:
     research_collection = mydb["research_areas_information"]
     return research_collection.find_one({"Research Area":name})
 
-def get_all_professors():
+def get_all_professors() -> list[dict]:
     prof_collection = mydb["professor_information"]
-    return prof_collection.find()
+    profs = []
+    for prof in prof_collection.find():
+        profs.append(prof)
+    return profs
 
-def get_all_labs():
+def get_all_labs() -> list[dict]:
     lab_collection = mydb["labs_information"]
-    return lab_collection.find()
+    labs = []
+    for lab in lab_collection.find():
+        labs.append(lab)
+    return labs
 
-def get_all_research_areas():
+def get_all_research_areas() -> list[dict]:
     research_collection = mydb["research_areas_information"]
-    return research_collection.find()
+    research_areas = []
+    for area in research_collection.find():
+        research_areas.append(area)
+    return research_areas
 
-def get_all_users():
+def get_all_users() -> list[dict]:
     users_collection = mydb["user_information"]
-    return users_collection.find()
+    users = []
+    for user in users_collection.find():
+        users.append(user)
+    return users
 
-   
 
 
