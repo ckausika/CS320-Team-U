@@ -68,4 +68,9 @@ def get_all_users() -> list[dict]:
     return users
 
 
+def insert_user(email: str, name: str, pwd: str, role: str = "Student") -> object: 
+    users_collection = mydb["user_information"]
+    insert_id = users_collection.insert_one({"Email":email, "Name":name, "Pwd":pwd, "Role":role})
+    return insert_id
+
 
