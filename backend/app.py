@@ -6,20 +6,22 @@
 
 from flask import Flask, jsonify, request
 from markupsafe import escape # escape used to prevent injection via user input
-from auth import accountCreate
+from auth import accountCreate, accountLogin, verifyUserByToken
+#from mongo_client import getProfessors
 
 app = Flask(__name__)
 
 # Handle all Auth API endpoint routing
-@app.route("/api/auth/<endpoint>")
+@app.route("/api/auth/<endpoint>", methods = ['POST'])
 def auth_api_routing(endpoint):
     # If the request is not a POST request then do not serve it
-    if request.method != 'POST':
-        responseData = {
-                "Success": False,
-                "SuccessMessage": "The request is not a POST request!"
-            }
-        return jsonify(responseData)
+    #if request.method != 'POST':
+     #   responseData = {
+     #           "Success": False, 
+     #           "SuccessMessage": "The request is not a POST request!"
+    #        }
+    #    return jsonify(responseData)
+    
     
     # Determine which endpoint the client is attempting to use
     match escape(endpoint):
@@ -33,6 +35,23 @@ def auth_api_routing(endpoint):
                     "Success": False,
                     "SuccessMessage": "The server was unable to create the account!"
                 }
+        case "login":
+            result = accountLogin(request.form['username'], request.form['password'])
+
+            if result == "INVALID":
+                # A token was not able to be created!
+                responseData = {
+                    "Success": False,
+                    "SuccessMessage": "The server was unable to log into the account!"
+                }
+            else:
+                # Returns JSON with token for the user.
+                responseData = {
+                    "Success": True,
+                    "Token": result
+                }
+        case "test":
+            if 
         case _:
             # The endpoint does not exist
             responseData = {
