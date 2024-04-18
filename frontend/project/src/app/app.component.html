@@ -1,25 +1,32 @@
 <main class="main">
-  <mat-toolbar *ngIf="showHeader">
-    <mat-toolbar-row class="title">
+  <mat-toolbar>
+    <mat-toolbar-row>
       CICS Undergrad Research Finder
     </mat-toolbar-row>
     <mat-toolbar-row class="navbar">
-      <button mat-button routerLink="/">
-        Home
-      </button>
-      <button mat-button routerLink="/research">
-        Research
-      </button>
-      <button mat-button routerLink="/">
-        Professor
-      </button>
-      <button mat-button routerLink="/">
-        Application
-      </button>
-      <button mat-button routerLink="/login">
-        Log out
-      </button>
+      <div class="navbar-left">
+        <button mat-button routerLink="/">
+          Home
+        </button>
+        <button mat-button routerLink="/research">
+          Research
+        </button>
+        <button mat-button routerLink="/">
+          Professor
+        </button>
+        <button mat-button routerLink="/">
+          Application
+        </button>
+      </div>
+      <div class="navbar-right">
+        <button mat-button routerLink="/login">
+          Log In
+        </button>
+        <button mat-button routerLink="/signup">
+          Sign Up
+        </button>
+      </div>
     </mat-toolbar-row>
   </mat-toolbar>
-  <router-outlet />    
+  <router-outlet/>    
 </main>

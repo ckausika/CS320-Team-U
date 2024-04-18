@@ -1,4 +1,4 @@
-.login {
+.signup {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,7 +6,7 @@
     height: calc(100dvh - 128px);
 }
 
-.login-card {
+.signup-card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,17 +15,17 @@
     border-radius: 0px;
 }
 
-.login-content {
+.signup-content {
     display: flex;
     flex-direction: column;
     width: 320px;
 }
 
-.login-item {
+.signup-item {
     width: 100%;
 }
 
-.login-button {
+.signup-button {
     width: 100%;
     height: 40px;
     background-color: #940a00 !important;
@@ -50,7 +50,7 @@
     padding-right: 10px;
 }
 
-.login-text {
+.signup-text {
     color: white;
     font-size: 28px;
     font-weight: 500;
