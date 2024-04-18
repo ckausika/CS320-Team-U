@@ -53,7 +53,7 @@ def generateToken(user):
 
 def getUserFromToken(token):
     try:
-        decoded_jwt = jwt.decode(token, "secret", algorithms=["HS256"])
+        decoded_jwt = jwt.decode(token, JWTsecret, algorithms=["HS256"])
 
 
         return True, decoded_jwt["user"]
