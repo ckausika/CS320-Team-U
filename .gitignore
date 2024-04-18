@@ -3,3 +3,7 @@ backend/__pycache__/
 
 # Ignores python virtual environment
 backend/.venv/
+
+# Ignore environment file with credentials
+backend/.env
+.env
