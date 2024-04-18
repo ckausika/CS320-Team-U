@@ -78,16 +78,3 @@ def insert_user(email: str, name: str, pwd: str, role: str = "Student") -> objec
     users_collection = mydb["user_information"]
     insert_id = users_collection.insert_one({"Email":email, "Name":name, "Pwd":pwd, "Role":role})
     return insert_id
-
-def change_prof_format():
-    prof_collection = mydb["professor_information"]
-    result = prof_collection.find()
-    x = prof_collection.delete_many({})    
-    for prof in result:
-        prof_list = prof['Professor'].split(", ")
-        if (len(prof_list) > 1):
-            reformat_name = prof_list[1] + " " + prof_list[0]
-        else:
-            reformat_name = prof_list[0]
-        prof_collection.insert_one({"Professor":reformat_name, "Homepage Link":prof["Homepage Link"], "Position":prof["Position"], "Email":prof["Email"]})
-change_prof_format()
