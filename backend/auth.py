@@ -29,6 +29,7 @@
 # [USERNAME, HASHED PASSWORD, HASHED TOKEN]
 
 from argon2 import PasswordHasher
+import jwt
 
 ph = PasswordHasher() # Argon 2 hashing object
 
@@ -40,8 +41,24 @@ ph = PasswordHasher() # Argon 2 hashing object
 # Output: Boolean (Success/Failure)
 #
 
-def determineHashMatch(user, unhashedInput, type):
-    if type == 'Password':
+def generateToken(user):
+    encoded_jwt = jwt.encode({"user": user}, "secret", algorithm="HS256")
+
+    return encoded_jwt;
+
+def verifyUserByToken(token):
+    try:
+        decoded_jwt = jwt.decode(token, "secret", algorithms=["HS256"])
+
+
+        return True, decoded_jwt["user"]
+    except jwt.InvalidSignatureError: # The secret is wrong!
+        return False, "-1"
+
+#print(verifyUserByToken(generateToken("abc")))
+
+def determineHashMatch(user, unhashedInput):
+    #if type == 'Password':
         # Get stored password hash of user from the DB
         #storedPasswordHash = ?
 
@@ -54,7 +71,7 @@ def determineHashMatch(user, unhashedInput, type):
         # Compare unhashed target to the stored token
         #return ph.verify(storedTokenHash, target)
     #else:
-        return False # An unknown type was given to the function
+    return False # An unknown type was given to the function
 
 # Create an account given a username and password
 def accountCreate(username, password):
@@ -66,7 +83,22 @@ def accountCreate(username, password):
 
 # Login to an account given a username and password
 def accountLogin(username, password):
-    return False
+    # return "INVALID"
+    # compare username & password in db. if good then return token:
+
+    #def get_user_by_username(username: str) -> dict:
+    #users_collection = mydb["user_information"]
+    #return users_collection.find_one({"Username":username})
+    foundAccount = get_user_by_username(username)
+
+    if(determineHashMatch(password, foundAccount["password"])):
+        # If the two passwords match then generate a token and send to the user!
+        return generateToken(username)
+    else:
+        # If the password is not correct then return false!
+        return False;
+
+    #return verifyUserByToken(generateToken(username))
 
 # Perform an authentication request given a token
 def authConnect(token):
