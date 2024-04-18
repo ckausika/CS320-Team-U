@@ -91,13 +91,12 @@ def accountLogin(username, password):
     #return users_collection.find_one({"Username":username})
     foundAccount = get_user_by_username(username)
 
-    if(determineHashMatch(password, foundAccount["password"])){
+    if(determineHashMatch(password, foundAccount["password"])):
         # If the two passwords match then generate a token and send to the user!
-        return generateToken(username);
-    }else{
+        return generateToken(username)
+    else:
         # If the password is not correct then return false!
         return False;
-    }
 
     #return verifyUserByToken(generateToken(username))
 

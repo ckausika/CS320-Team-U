@@ -50,8 +50,6 @@ def auth_api_routing(endpoint):
                     "Success": True,
                     "Token": result
                 }
-        case "test":
-            if 
         case _:
             # The endpoint does not exist
             responseData = {
