@@ -29,7 +29,12 @@
 # [USERNAME, HASHED PASSWORD, HASHED TOKEN]
 
 from argon2 import PasswordHasher
+from dotenv import load_dotenv
 import jwt
+import os
+
+load_dotenv()
+JWTsecret = os.getenv('JWTsecret') # JWT secret key
 
 ph = PasswordHasher() # Argon 2 hashing object
 
@@ -42,11 +47,11 @@ ph = PasswordHasher() # Argon 2 hashing object
 #
 
 def generateToken(user):
-    encoded_jwt = jwt.encode({"user": user}, "secret", algorithm="HS256")
+    encoded_jwt = jwt.encode({"user": user}, JWTsecret, algorithm="HS256")
 
     return encoded_jwt;
 
-def verifyUserByToken(token):
+def getUserFromToken(token):
     try:
         decoded_jwt = jwt.decode(token, "secret", algorithms=["HS256"])
 
@@ -71,7 +76,7 @@ def determineHashMatch(user, unhashedInput):
         # Compare unhashed target to the stored token
         #return ph.verify(storedTokenHash, target)
     #else:
-    return False # An unknown type was given to the function
+    return True # An unknown type was given to the function
 
 # Create an account given a username and password
 def accountCreate(username, password):

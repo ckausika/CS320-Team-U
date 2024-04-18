@@ -6,7 +6,7 @@
 
 from flask import Flask, jsonify, request
 from markupsafe import escape # escape used to prevent injection via user input
-from auth import accountCreate, accountLogin, verifyUserByToken
+from auth import accountCreate, accountLogin, getUserFromToken
 #from mongo_client import getProfessors
 from mongo_client import get_all_professors, get_all_labs
 
