@@ -15,15 +15,4 @@ import { NgIf } from '@angular/common';
 })
 export class AppComponent {
   title = 'research-finder';
-  showHeader: boolean;
-
-  constructor(private router: Router) {
-    this.showHeader = this.router.url !== '/login';
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.showHeader = event.url !== '/login';
-      }
-    });
-  }
 }
