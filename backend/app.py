@@ -8,6 +8,7 @@ from flask import Flask, jsonify, request
 from markupsafe import escape # escape used to prevent injection via user input
 from auth import accountCreate, accountLogin, verifyUserByToken
 #from mongo_client import getProfessors
+from mongo_client import get_all_professors, get_all_labs
 
 app = Flask(__name__)
 
@@ -75,18 +76,54 @@ def get_api_routing(endpoint):
 
     # Get Professor Data
     if target == "professor":
+        #"Data": get_all_professors()[0]["Professor"]
+        dbData = get_all_professors()
+        #dbData = get_professor_by_name(name);
+        professorList = []
+
+        # Convert the dictionary into a list so it can be JSONified
+        if dbData is not None:
+            for prof in dbData:
+                professorList.append({
+                    "Name": prof["Professor"],
+                    "Position": prof["Position"],
+                    "Email": prof["Email"],
+                    "Phone": prof["Phone"],
+                    "Office Location": prof["Office Location"],
+                    "Homepage": prof["Homepage Link"]
+                })
+
         responseData = {
             "Success": True,
-            "Endpoint used": escape(endpoint) + " - query: " + name
+            "Data": professorList
         }
+
         return jsonify(responseData)
 
     # Get Lab Data
     elif target == "lab":
+        dbData = get_all_labs()
+        labList = []
+
+        # Convert the dictionary into a list so it can be JSONified
+        if labList is not None:
+            for lab in dbData:
+                newData = {
+                    "Name": lab["Labs"],
+                    "Desc": lab["Description"],
+                }
+
+                # Some labs don't have staff listed so only attempt to add them if they are listed.
+                if "Professors" in lab:
+                    newData["Staff"] = lab["Professors"]
+                
+                labList.append(newData)
+
         responseData = {
             "Success": True,
-            "Endpoint used": escape(endpoint) + " - query: " + name
+            "Data": labList
         }
+
         return jsonify(responseData)
 
     # We weren't able to find our target so just return a Failure response.
