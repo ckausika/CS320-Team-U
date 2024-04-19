@@ -8,7 +8,7 @@ from flask import Flask, jsonify, request
 from markupsafe import escape # escape used to prevent injection via user input
 from auth import accountCreate, accountLogin, getUserFromToken
 #from mongo_client import getProfessors
-from mongo_client import get_all_professors, get_all_labs
+from mongo_client import get_lab_by_name, get_professor_by_name
 
 app = Flask(__name__)
 
@@ -76,10 +76,12 @@ def get_api_routing(endpoint):
         }
         return jsonify(responseData)
 
+    # Sanitize the input
+    name = escape(name)
+
     # Get Professor Data
     if target == "professor":
-        #"Data": get_all_professors()[0]["Professor"]
-        dbData = get_all_professors()
+        dbData = get_professor_by_name(name)
         #dbData = get_professor_by_name(name);
         professorList = []
 
@@ -104,7 +106,7 @@ def get_api_routing(endpoint):
 
     # Get Lab Data
     elif target == "lab":
-        dbData = get_all_labs()
+        dbData = get_lab_by_name(name)
         labList = []
 
         # Convert the dictionary into a list so it can be JSONified
