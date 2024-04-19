@@ -1,13 +1,6 @@
-# The flask server can be ran with the following commands:
-#
-# .venv\Scripts\activate
-# flask --app app run
-#
-
 from flask import Flask, jsonify, request
 from markupsafe import escape # escape used to prevent injection via user input
 from auth import accountCreate, accountLogin, getUserFromToken
-#from mongo_client import getProfessors
 from mongo_client import get_lab_by_name, get_professor_by_name
 
 app = Flask(__name__)
@@ -15,15 +8,6 @@ app = Flask(__name__)
 # Handle all Auth API endpoint routing
 @app.route("/api/auth/<endpoint>", methods = ['POST'])
 def auth_api_routing(endpoint):
-    # If the request is not a POST request then do not serve it
-    #if request.method != 'POST':
-     #   responseData = {
-     #           "Success": False, 
-     #           "SuccessMessage": "The request is not a POST request!"
-    #        }
-    #    return jsonify(responseData)
-    
-    
     # Determine which endpoint the client is attempting to use
     match escape(endpoint):
         case "createaccount":
@@ -82,7 +66,6 @@ def get_api_routing(endpoint):
     # Get Professor Data
     if target == "professor":
         dbData = get_professor_by_name(name)
-        #dbData = get_professor_by_name(name);
         professorList = []
 
         # Convert the dictionary into a list so it can be JSONified
