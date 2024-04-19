@@ -57,6 +57,7 @@ def get_api_routing(endpoint):
     if name is None:
         responseData = {
             "Success": False,
+            "SuccessMessage": "Please provide name query and ensure the endpoint exists"
         }
         return jsonify(responseData)
 
@@ -110,11 +111,11 @@ def get_api_routing(endpoint):
             "Success": True,
             "Data": labList
         }
-
         return jsonify(responseData)
 
     # We weren't able to find our target so just return a Failure response.
     responseData = {
         "Success": False,
+        "SuccessMessage": "Specified endpoint does not exist"
     }
     return jsonify(responseData)
