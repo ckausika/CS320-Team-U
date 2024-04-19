@@ -27,10 +27,13 @@ def auth_api_routing(endpoint):
     # Determine which endpoint the client is attempting to use
     match escape(endpoint):
         case "createaccount":
-            result = accountCreate(request.form['username'], request.form['password'])
+            result = accountCreate(request.form['username'], request.form['password'], request.form['email'], request.form['role'])
 
-            if result:
-                print("blah")
+            if result[0]:
+                responseData = {
+                    "Success": False,
+                    "Token": result[1]
+                }
             else:
                 responseData = {
                     "Success": False,
@@ -38,18 +41,17 @@ def auth_api_routing(endpoint):
                 }
         case "login":
             result = accountLogin(request.form['username'], request.form['password'])
-
-            if result == "INVALID":
+            if result[0]:
+                # Returns JSON with token for the user.
+                responseData = {
+                    "Success": True,
+                    "Token": result[1]
+                }
+            else:
                 # A token was not able to be created!
                 responseData = {
                     "Success": False,
                     "SuccessMessage": "The server was unable to log into the account!"
-                }
-            else:
-                # Returns JSON with token for the user.
-                responseData = {
-                    "Success": True,
-                    "Token": result
                 }
         case _:
             # The endpoint does not exist

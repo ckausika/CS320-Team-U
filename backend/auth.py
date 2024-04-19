@@ -1,33 +1,4 @@
-# Todo:
-# 1. Connect to auth API endpoints
-#
-# 2. Find a hashing function we can import https://pypi.org/project/argon2-cffi/
-#
-# 3. Create authentication token generation function. Have DB store a
-#    hashed version of that token so they are securely stored and
-#    not in plain-text.
-#
-# 4. Create account creation function. Ensure the same username does not already
-#    exist in the DB. Then hash password and store it in the DB with the plain-text
-#    username. Create (refer to todo #3) and return the unhashed token to the client
-#    so they can store it as a cookie.
-#
-# 5. Create login function. Hash password input and compare it, and the username,
-#    to the ones stored in the DB. If both good match, then replace current token
-#    with a new one (refer to todo #3 for token creation) and return the unhashed
-#    token to the client so they can store it as a cookie.
-#
-# 6. For requests requiring authentication, receive token from client. Hash the token
-#    and compare it to hashed version in the DB. If good match, go ahead with whatever
-#    data retrieval that is requested.
-#
-# 7. Create logout function. Receive token from the client and hash it and then
-#    compare it to the one stored in the database. If match, erase that client's
-#    stored, hashed token from the DB so it can not be used to log in again.
-#
-# Required stored data for each account's authentication
-# [USERNAME, HASHED PASSWORD, HASHED TOKEN]
-
+from mongo_client import get_user_by_username, insert_user
 from argon2 import PasswordHasher
 from dotenv import load_dotenv
 import jwt
@@ -46,8 +17,9 @@ ph = PasswordHasher() # Argon 2 hashing object
 # Output: Boolean (Success/Failure)
 #
 
+# Generate a JWT token based off the username and the JWT secret
 def generateToken(user):
-    encoded_jwt = jwt.encode({"user": user}, JWTsecret, algorithm="HS256")
+    encoded_jwt = jwt.encode({"user": user.lower()}, JWTsecret, algorithm="HS256")
 
     return encoded_jwt;
 
@@ -60,48 +32,53 @@ def getUserFromToken(token):
     except jwt.InvalidSignatureError: # The secret is wrong!
         return False, "-1"
 
-#print(verifyUserByToken(generateToken("abc")))
+# Hashes the pasword with Argon2 and returns the hash
+def hashPassword(plainTextPassword):
+    return ph.hash(plainTextPassword)
 
-def determineHashMatch(user, unhashedInput):
-    #if type == 'Password':
-        # Get stored password hash of user from the DB
-        #storedPasswordHash = ?
-
-        # Compare unhashed target to the stored password
-        #return ph.verify(storedPasswordHash, target)
-    #elif type == 'Token':
-        # Get stored token hash of user from the DB
-        #storedTokenHash = ?
-
-        # Compare unhashed target to the stored token
-        #return ph.verify(storedTokenHash, target)
-    #else:
-    return True # An unknown type was given to the function
+# Returns boolean if the input pass matches the stored hash
+def determineHashMatch(storedPassHash, inputPass):
+    try:
+        ph.verify(storedPassHash, inputPass)
+        return True
+    except ph.VerifySignatureMismatch:
+        return False
 
 # Create an account given a username and password
-def accountCreate(username, password):
-    # If username in DB already exists then return False
+def accountCreate(username, password, email, role):
+    # Determine if the account with the specified username already exists in the DB
+    loweredName = username.lower()
 
-    
-    print("acc create ran")
-    return False
+    foundAccount = get_user_by_username(loweredName)
+
+    if foundAccount is None:
+        # The account does not exist in the DB!
+
+        # Insert a new user in the database
+        insert_user(email, loweredName, hashPassword(password), role) # CHECK IF FAILURE???
+
+        # Return a success response and the token
+        return True, generateToken(loweredName)
+    else:
+        return False, "Already exists!"
+
 
 # Login to an account given a username and password
 def accountLogin(username, password):
-    # return "INVALID"
-    # compare username & password in db. if good then return token:
+    loweredName = username.lower()
+    foundAccount = get_user_by_username(loweredName)
 
-    #def get_user_by_username(username: str) -> dict:
-    #users_collection = mydb["user_information"]
-    #return users_collection.find_one({"Username":username})
-    foundAccount = get_user_by_username(username)
+    # Account with specified username does not exist in the DB
+    if foundAccount is None:
+        return False, "INVALID"
 
-    if(determineHashMatch(password, foundAccount["password"])):
+    if(determineHashMatch(foundAccount["Pwd"], password)):
+    #if(determineHashMatch(password, foundAccount["password"])):
         # If the two passwords match then generate a token and send to the user!
-        return generateToken(username)
+        return True, generateToken(loweredName)
     else:
         # If the password is not correct then return false!
-        return False;
+        return False, "INVALID"
 
     #return verifyUserByToken(generateToken(username))
 
