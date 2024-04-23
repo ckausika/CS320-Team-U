@@ -1,37 +1,46 @@
-# The flask server can be ran with the following commands:
-#
-# .venv\Scripts\activate
-# flask --app app run
-#
-
 from flask import Flask, jsonify, request
-from markupsafe import escape # escape used to prevent injection via user input
-from auth import accountCreate
+from flask_cors import CORS
+from markupsafe import escape # Escape used to prevent injection via user input
+from auth import accountCreate, accountLogin, getUserFromToken
+from mongo_client import get_lab_by_name, get_professor_by_name
 
 app = Flask(__name__)
+# Eliminate CORS errors when making requests from front end
+cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+
 
 # Handle all Auth API endpoint routing
-@app.route("/api/auth/<endpoint>")
+@app.route("/api/auth/<endpoint>", methods = ['POST'])
 def auth_api_routing(endpoint):
-    # If the request is not a POST request then do not serve it
-    if request.method != 'POST':
-        responseData = {
-                "Success": False,
-                "SuccessMessage": "The request is not a POST request!"
-            }
-        return jsonify(responseData)
-    
     # Determine which endpoint the client is attempting to use
     match escape(endpoint):
         case "createaccount":
-            result = accountCreate(request.form['username'], request.form['password'])
+            result = accountCreate(request.form['username'], request.form['password'], request.form['email'], request.form['role'])
 
-            if result:
-                print("blah")
+            if result[0]:
+                responseData = {
+                    "Success": False,
+                    "Token": result[1]
+                }
             else:
                 responseData = {
                     "Success": False,
                     "SuccessMessage": "The server was unable to create the account!"
+                }
+        case "login":
+            result = accountLogin(request.form['username'], request.form['password'])
+            if result[0]:
+                # Returns JSON with token for the user.
+                responseData = {
+                    "Success": True,
+                    "Token": result[1]
+                }
+            else:
+                # A token was not able to be created!
+                responseData = {
+                    "Success": False,
+                    "SuccessMessage": "The server was unable to log into the account!"
                 }
         case _:
             # The endpoint does not exist
@@ -53,27 +62,65 @@ def get_api_routing(endpoint):
     if name is None:
         responseData = {
             "Success": False,
+            "SuccessMessage": "Please provide name query and ensure the endpoint exists"
         }
         return jsonify(responseData)
 
+    # Sanitize the input
+    name = escape(name)
+
     # Get Professor Data
     if target == "professor":
+        dbData = get_professor_by_name(name)
+        professorList = []
+
+        # Convert the dictionary into a list so it can be JSONified
+        if dbData is not None:
+            for prof in dbData:
+                professorList.append({
+                    "Name": prof["Professor"],
+                    "Position": prof["Position"],
+                    "Email": prof["Email"],
+                    "Phone": prof["Phone"],
+                    "Office Location": prof["Office Location"],
+                    "Homepage": prof["Homepage Link"]
+                })
+
         responseData = {
             "Success": True,
-            "Endpoint used": escape(endpoint) + " - query: " + name
+            "Data": professorList
         }
+
         return jsonify(responseData)
 
     # Get Lab Data
     elif target == "lab":
+        dbData = get_lab_by_name(name)
+        labList = []
+
+        # Convert the dictionary into a list so it can be JSONified
+        if labList is not None:
+            for lab in dbData:
+                newData = {
+                    "Name": lab["Labs"],
+                    "Desc": lab["Description"],
+                }
+
+                # Some labs don't have staff listed so only attempt to add them if they are listed.
+                if "Professors" in lab:
+                    newData["Staff"] = lab["Professors"]
+                
+                labList.append(newData)
+
         responseData = {
             "Success": True,
-            "Endpoint used": escape(endpoint) + " - query: " + name
+            "Data": labList
         }
         return jsonify(responseData)
 
     # We weren't able to find our target so just return a Failure response.
     responseData = {
         "Success": False,
+        "SuccessMessage": "Specified endpoint does not exist"
     }
     return jsonify(responseData)
