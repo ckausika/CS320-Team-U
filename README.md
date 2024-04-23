@@ -60,3 +60,12 @@ MongoDB Atlas Database | Multi-Cloud Database Service
   source .venv/bin/activate         # Enter venv
   flask --app app run               # Run Flask App
 ```
+
+### Frontend Quickstart
+
+```
+  cd frontend/project
+  npm install
+  npm install -g @angular/cli
+  ng serve --open
+```
