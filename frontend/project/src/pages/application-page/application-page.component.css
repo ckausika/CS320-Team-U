@@ -1,0 +1,28 @@
+.application-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.application-content {
+    display:block;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-field-1 {
+    display: flex; 
+}
+
+.app-field-2 {
+    display: flex; 
+}
+
+.app-comment-box {
+    display:flex;
+    width: 637px;
+    height: 200px;
+    text-wrap: wrap;
+}
