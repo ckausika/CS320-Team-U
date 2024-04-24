@@ -1,0 +1,59 @@
+.application-card {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-direction: column;
+    width: 60%;
+}
+
+.application-content {
+    display:block;
+    justify-content: space-between;
+    align-items: center;
+    padding:2%
+}
+
+.app-field-1 {
+    display: flex; 
+    justify-content: space-between;
+    
+}
+
+.app-field-2 {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.app-comment-box {
+    display:flex;
+    width: 98%;
+    height: 200px;
+    padding-left: 1%;
+    justify-content: center;
+    text-wrap: wrap;
+}
+
+.first-name {
+    display:flex;
+    padding:1%
+}
+.last-name {
+    display:flex;
+    padding:1%
+}
+.email {
+    display:flex;
+    padding:1%
+}
+.major {
+    display:flex;
+    padding:1%
+}
+.phone-num {
+    display:flex;
+    padding:1%
+}
+.grad-year {
+    display:flex;
+    padding:1%
+}
