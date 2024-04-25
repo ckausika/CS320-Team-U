@@ -1,11 +1,19 @@
-.application-card {
+.application {
     display: flex;
-    justify-content: left;
-    align-items: left;
-    flex-direction: column;
-    width: 60%;
+    justify-content:space-between
 }
 
+.application-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 55%;
+    color: rgb(230, 230, 230)
+}
+.application-title {
+    padding-left:1%
+}
 .application-content {
     display:block;
     justify-content: space-between;
@@ -27,7 +35,6 @@
 .app-comment-box {
     display:flex;
     width: 98%;
-    height: 200px;
     padding-left: 1%;
     justify-content: center;
     text-wrap: wrap;
@@ -56,4 +63,47 @@
 .grad-year {
     display:flex;
     padding:1%
+}
+
+.app-buttons {
+    display:flex;
+    align-items: left;
+    justify-content:space-evenly;
+}
+.app-buttons-2 {
+    display:flex;
+    align-items: left;
+    justify-content:left;
+}
+.submit-application {
+    background-color: #940a00;
+    padding:1%;
+}
+.upload-resume {
+    background-color: #940a00;
+}
+.upload-cover-letter{
+    background-color: #940a00;
+    align-content:center;
+}
+.space {
+    padding:1%;
+}
+
+.position-info {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    flex-direction: column;
+    width: 45%;
+    color: rgb(230, 230, 230);
+    padding-left:1%;
+}
+
+.position-content {
+    padding-left:1%;
+}
+
+.save-job {
+    background-color: #940a00;
 }
