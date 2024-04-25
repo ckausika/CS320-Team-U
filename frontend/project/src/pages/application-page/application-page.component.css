@@ -78,8 +78,10 @@
 .submit-application {
     background-color: #940a00;
     padding:1%;
+    margin-left:1%;
 }
 .upload-resume {
+    margin:1%;
     background-color: #940a00;
 }
 .upload-cover-letter{
