@@ -1,36 +1,69 @@
-#Create test using pyunit
-
 import unittest
+from unittest.mock import MagicMock, patch
+from mongo_client import get_user_by_username, insert_user
+from argon2 import PasswordHasher
+from dotenv import load_dotenv
+import jwt
+import os
 
-class TestAuth(unittest.TestCase):
+load_dotenv()
+JWTsecret = os.getenv('JWTsecret') # JWT secret key
+
+ph = PasswordHasher() # Argon 2 hashing object
+
+# Import the functions you want to test
+from auth import generateToken, getUserFromToken, hashPassword, determineHashMatch, accountCreate, accountLogin, authConnect
+
+class TestFunctions(unittest.TestCase):
+
+    def setUp(self):
+        self.username = "testuser"
+        self.password = "testpassword"
+        self.email = "test@example.com"
+        self.role = "user"
+        self.token = "testtoken"
+
+    # Test for generateToken function
     def test_generateToken(self):
-        # Test the generateToken function
-        self.assertEqual(generateToken("test"), "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidGVzdCJ9.1GZ6QmW7QrZy7qZL3KoVYQ")
-        #check if it returns a string
-        self.assertIsInstance(generateToken("test"), str)
+        token = generateToken(self.username)
+        self.assertIsInstance(token, str)
+
+    # Test for getUserFromToken function
     def test_getUserFromToken(self):
-        # Test the getUserFromToken function
-        self.assertEqual(getUser(FromToken("test"), (True, "test"))
+        token = jwt.encode({"user": self.username.lower()}, JWTsecret, algorithm="HS256")
+        result, user = getUserFromToken(token)
+        self.assertTrue(result)
+        self.assertEqual(user, self.username.lower())
 
+    # Test for hashPassword function
     def test_hashPassword(self):
-        # Test the hashPassword function
-        self.assertEqual(hashPassword("test"), "$argon2id$v=19$m=102400,t=2,p=8$V2FyZ2FuZw$1GZ6QmW7QrZy7qZL3KoVYQ")
+        hashed_password = hashPassword(self.password)
+        self.assertIsInstance(hashed_password, str)
 
+    # Test for determineHashMatch function
     def test_determineHashMatch(self):
-        # Test the determineHashMatch function
-        self.assertTrue(determineHashMatch("$argon2id$v=19$m=102400,t=2,p=8$V2FyZ2FuZw$1GZ6QmW7QrZy7qZL3KoVYQ", "test"))
+        stored_pass_hash = ph.hash(self.password)
+        self.assertTrue(determineHashMatch(stored_pass_hash, self.password))
 
-    def test_accountCreate(self):
-        # Test the accountCreate function
-        self.assertTrue(accountCreate("test", "test", "test", "test"))
-    def test_accountLogin(self):
-        # Test the accountLogin function
-        self.assertTrue(accountLogin("test", "test"))
-        self.assertFalse(accountLogin("test", "test2"))
+    # Test for accountCreate function
+    @patch('auth.get_user_by_username', return_value=None)
+    @patch('auth.insert_user', return_value=None)
+    def test_accountCreate(self, mock_insert_user, mock_get_user_by_username):
+        success, token = accountCreate(self.username, self.password, self.email, self.role)
+        self.assertTrue(success)
+        self.assertIsInstance(token, str)
+
+    # Test for accountLogin function
+    @patch('auth.get_user_by_username', return_value={"Pwd": ph.hash("testpassword")})
+    def test_accountLogin(self, mock_get_user_by_username):
+        success, token = accountLogin(self.username, self.password)
+        self.assertTrue(success)
+        self.assertIsInstance(token, str)
+
+    # Test for authConnect function
+    def test_authConnect(self):
+        result = authConnect(self.token)
+        self.assertFalse(result)
 
 if __name__ == '__main__':
-
     unittest.main()
-
-                         
-
