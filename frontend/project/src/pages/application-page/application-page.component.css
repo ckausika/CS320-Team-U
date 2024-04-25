@@ -107,5 +107,9 @@
 }
 
 .save-job {
+    margin:1%;
+    background-color: #940a00;
+}
+.select-job {
     background-color: #940a00;
 }
