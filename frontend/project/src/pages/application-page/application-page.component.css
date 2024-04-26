@@ -1,6 +1,6 @@
 .application {
     display: flex;
-    justify-content:space-between
+    justify-content:space-between;
 }
 
 .application-card {
@@ -9,7 +9,8 @@
     align-items: center;
     flex-direction: column;
     width: 55%;
-    color: rgb(230, 230, 230)
+    color: rgb(230, 230, 230);
+    
 }
 .application-title {
     padding-left:1%
@@ -18,7 +19,7 @@
     display:block;
     justify-content: space-between;
     align-items: center;
-    padding:2%
+    padding:2%;
 }
 
 .app-field-1 {
@@ -42,27 +43,27 @@
 
 .first-name {
     display:flex;
-    padding:1%
+    padding:1%;
 }
 .last-name {
     display:flex;
-    padding:1%
+    padding:1%;
 }
 .email {
     display:flex;
-    padding:1%
+    padding:1%;
 }
 .major {
     display:flex;
-    padding:1%
+    padding:1%;
 }
 .phone-num {
     display:flex;
-    padding:1%
+    padding:1%;
 }
 .grad-year {
     display:flex;
-    padding:1%
+    padding:1%;
 }
 
 .app-buttons {

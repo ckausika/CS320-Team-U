@@ -1,0 +1,46 @@
+.create-form{
+    display:flex;
+    justify-content: space-evenly;
+    align-self:center;
+}
+.form-content{
+    margin:1%;
+    display:block;
+    color:rgb(177, 177, 177);
+}
+.row{
+    margin:1%;
+    display:flex;
+    align-items:center;
+    justify-content: space-evenly;
+    width:100%
+}
+
+.title{
+    margin:1%;
+}
+
+.first-name {
+    margin:1%;
+}
+.last-name {
+    margin:1%;
+}
+.email {
+    margin:1%;
+    margin-right:3%;
+}
+.job-description {
+    margin-right:2%;
+    width:80%
+}
+.submit-opportunity {
+    margin:1%;
+    background-color: #940a00;
+}
+.submit-button {
+    width:15%;
+    background-color: #940a00;
+    margin:1%;  
+    align-self:center;
+}

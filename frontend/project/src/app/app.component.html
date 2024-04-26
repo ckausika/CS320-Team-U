@@ -15,9 +15,9 @@
           Professor
         </button>
         <button mat-button [matMenuTriggerFor]="opportunityDropdown" class="opportunity-dropdown">Opportunity</button>
-        <mat-menu #opportunityDropdown="matMenu" class="opportunity-dropdown">
-          <button mat-button create-opp routerLink="/create" class="opportunity-dropdown">Create</button>
-          <button mat-button apply-opp routerLink="/application" class="opportunity-dropdown">Apply</button>
+        <mat-menu #opportunityDropdown="matMenu" class="opportunity-dropdown" style="background-color: blue;">
+          <button mat-button create-opp routerLink="/create-opportunity" class="opp-buttons">Create</button>
+          <button mat-button apply-opp routerLink="/application" class="opp-buttons">Apply</button>
           
         </mat-menu>
       </div>
