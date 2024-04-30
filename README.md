@@ -30,7 +30,7 @@ Our project's web server is built with Python and the Flask Web Framework. The w
 Our python program scrapes results from several publically available Manning CICS webpages for information about faculty, labs, research areas and ongoing research projects.  
 
 ### Database
-MongoDB Atlas Database | Multi-Cloud Database Service
+MongoDB Atlas Database | Multi-Cloud Database Service: currently one database with 4 collections.
 
 
 ## Project Installation
