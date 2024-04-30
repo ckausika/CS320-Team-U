@@ -18,14 +18,13 @@ import { Parameter } from '../models/requests'
 })
 export class AppComponent {
   title = 'research-finder';
-
-  data: any;
+  
+  labs: any;
+  professors: any;
   gets: any;
 
   readonly ROOT_URL = 'http://localhost:5000/api'
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) {}
 
   get(endpoint: string, parameters?: Parameter[]): Observable<any> {
     let params = new HttpParams();
@@ -46,8 +45,19 @@ export class AppComponent {
     const params = [{param: 'name', value: ''}];
     this.get('/lab', params).subscribe({
       next: (data) => {
-        this.data = data;
-        console.log('Received data:', data);
+        this.labs = data.Data;
+        console.log('Updated data: ' + this.labs);
+      },
+      error: (error) => console.error('Failed to fetch data:', error)
+    });
+  }
+
+  fetchProfessorData() {
+    const params = [{param: 'name', value: ''}];
+    this.get('/professor', params).subscribe({
+      next: (data) => {
+        this.professors = data.Data;
+        console.log('Updated data: ' + this.professors);
       },
       error: (error) => console.error('Failed to fetch data:', error)
     });
