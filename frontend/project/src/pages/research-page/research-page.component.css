@@ -1,0 +1,66 @@
+.background{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(250, 243, 234);
+}
+.research-header{
+  background-color: #940a00;
+  text-align: center;
+}
+.research{
+  float: left;
+  height: 535px;
+  width: 400px;
+  margin-top: 4%;
+  margin-left: 17%;
+}
+.research-title{
+  color: azure;
+  font-weight: 500;
+}
+.research-content{
+  background-color: azure;
+  height: 100%
+}
+.research-paginator{
+  background-color: #940a00;
+}
+.research-display{
+  float: right;
+  height: 535px;
+  width: 550px;
+  margin-top: 4%;
+  margin-right: 13%;
+}
+.research-display-header{
+  background-color: #940a00;
+  text-align: center;
+}
+.research-display-title{
+  color: azure;
+  font-weight: 500;
+}
+.research-display-content{
+  background-color: azure;
+  height: 100%
+}
+.opportunity{
+  margin-top: 5%;
+  border-radius: 5%;
+}
+.opportunity-header{
+  background-color: #940a00;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5%;
+}
+.opportunity-title{
+  color: aliceblue;
+  font-size: medium;
+}
+.opportunity-content{
+  background-color: lightgray;
+  height: 50px;
+}
