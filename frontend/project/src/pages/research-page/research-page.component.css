@@ -33,13 +33,27 @@
   margin-top: 4%;
   margin-right: 13%;
 }
-.research-display-header{
+.research-display-header1{
   background-color: #940a00;
   text-align: center;
+  height: 17%;
 }
-.research-display-title{
+.research-display-header2{
+  background-color: lightgray;
+  text-align: left;
+  height: 27%;
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+}
+.research-display-title1{
   color: azure;
   font-weight: 500;
+  font-size: xx-large;
+}
+.research-display-title2{
+  color: rgb(0, 0, 0);
+  font-weight: 400;
 }
 .research-display-content{
   background-color: azure;
@@ -62,5 +76,15 @@
 }
 .opportunity-content{
   background-color: lightgray;
-  height: 50px;
+  height: 60px;
+}
+.apply-button{
+  background-color: #940a00;
+  color: azure;
+  height: 40px;
+  box-shadow: none;
+}
+.btn{
+  justify-content: flex-end;
+  display: flex;
 }
