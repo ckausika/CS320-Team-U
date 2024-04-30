@@ -37,10 +37,61 @@
             <div>
                 <mat-form-field class="app-comment-box">
                     <mat-label> Comments </mat-label>
-                    <input matInput placeholder="Write any comments here.">
+                    <textarea matInput placeholder="Write any comments here." ng-required="True"> </textarea>
                 </mat-form-field>
+            </div>
+            <div>
+                <button mat-flat-button class="upload-resume"> Upload Resume</button>
+                <button mat-flat-button class="upload-cover-letter"> Upload Cover Letter</button>
+            </div>
+            <div class="space">
+
+            </div>
+            <div>
+                <button mat-flat-button class="submit-application"> Submit Application</button>
             </div>
         </div>
     </mat-card>
-
+        
+    <mat-card class="position-info">
+        <div class="position-content">
+            <h1 class="position-title">
+                Opportunity Title
+            </h1>
+            <h3>
+                Professor Name
+            </h3>
+            <h3>
+                Expected Hours
+            </h3>
+            <h3>
+                Location
+            </h3>
+            <h5>
+                Insert Description here... 
+                <br>
+                -
+                <br>
+                -
+                <br>
+                -
+                <br>
+                -
+                <br>
+                -
+                <br>
+                -
+                <br>
+                -
+                <br>
+                -
+                <br>
+                -
+                <br>
+            </h5>
+            <button mat-flat-button class="select-job"> Select Job</button>
+            <button mat-flat-button class="save-job"> Save Job</button>
+            
+        </div>
+    </mat-card>
 </div>

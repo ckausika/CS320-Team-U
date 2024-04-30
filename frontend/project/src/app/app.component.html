@@ -14,16 +14,15 @@
         <button mat-button routerLink="/">
           Professor
         </button>
-        <button mat-button routerLink="/application">
-          Application
-        </button>
+        <button mat-button [matMenuTriggerFor]="opportunityDropdown" class="opportunity-dropdown">Opportunity</button>
+        <mat-menu #opportunityDropdown="matMenu" class="opportunity-dropdown" style="background-color: blue;">
+          <button mat-button create-opp routerLink="/create-opportunity" class="opp-buttons">Create</button>
+          <button mat-button apply-opp routerLink="/application" class="opp-buttons">Apply</button>
+          
+        </mat-menu>
         <button mat-button routerLink="/help">
           Help
         </button>
-        <button mat-button (click)="fetchLabData()">Fetch Lab Data</button>
-        <div *ngIf="data">
-          Check the console for data output.
-        </div>
       </div>
       <div class="navbar-right">
         <button mat-button routerLink="/login">

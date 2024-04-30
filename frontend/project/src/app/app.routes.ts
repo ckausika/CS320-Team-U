@@ -5,6 +5,7 @@ import {SignUpPageComponent} from '../pages/signup-page/signup-page.component'
 import {PageNotFoundComponent} from '../pages/page-not-found/page-not-found.component'
 import {ResearchPageComponent} from '../pages/research-page/research-page.component'
 import {ApplicationPageComponent} from '../pages/application-page/application-page.component'
+import {CreateOpportunityPageComponent} from '../pages/create-opportunity-page/create-opportunity-page.component'
 import {HelpPageComponent} from '../pages/help-page/help-page.component';
 
 
@@ -35,6 +36,9 @@ export const routes: Routes = [
         component: ApplicationPageComponent
     },
     {
+        path: 'create-opportunity',
+        title: 'Create Opportunity Page',
+        component: CreateOpportunityPageComponent
         path: 'help',
         title: 'Help Page',
         component: HelpPageComponent
