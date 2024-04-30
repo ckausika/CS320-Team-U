@@ -1,53 +1,33 @@
-body{
-
-}
-.nav{
-    width: 100%;
-    height: 75px;
-    background-color: #891D1D;
-    color: white;
-    font-size: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 50px;
-}
-.nav a{
-    margin-left: 15px;
-    margin-right: 15px;
-}
-.nav input {
-    width: 300px;
-    height: 35px;
-    margin-left: 600px;
-}
-
 .about{
-    padding: 30px;
+    height: 57h;
+    padding: 3%;
     background-color: #9014147c;
+    min-width: 800px;
 }
-
 .about h2{
-    font-size: 50px;
-    
+    font-size: 50px; 
 }
 .about p{
     font-size: 20px;
     line-height: 2;
 }
 .about img{
-    width: 800px;
+    margin-left: 3%;
+    width: 90vh;
 }
 .paragraph{
     display:flex;
 }
 .info{
+    height: 20vh;
     background-color: #891D1D;
-    height: 150px;
-    width: 100%;
     display:flex;
 }
-
 .info img{
-    height: 150px;
+    height: 100%;
+    margin-right: 67%;
+}
+.foot{
+    height: 100%;
+    color: white;
 }
