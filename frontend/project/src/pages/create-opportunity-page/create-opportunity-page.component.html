@@ -1,50 +1,50 @@
 <div class="create-form">
     <mat-card class="create-form-card">
-        <div class="form-content"> 
+        <form class="form-content" [formGroup] = "createOppForm"> 
             <h1 class="create-form-title">
                 Create Form
             </h1>
             <div class="row">
                 <mat-form-field class="title">
                     <mat-label> Your Title </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput ng-required="True" formControlName="yourTitle">
                 </mat-form-field>
                 <mat-form-field class="first-name">
                     <mat-label> First Name </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput id = firstName ng-required="True" formControlName="firstName">
                 </mat-form-field>
                 <mat-form-field class="last-name">
                     <mat-label> Last Name </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput ng-required="True" formControlName="lastName">
                 </mat-form-field>
                 <mat-form-field class="email">
                     <mat-label> Email Address </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput ng-required="True" formControlName="emailAddress">
                 </mat-form-field>
             </div>
             <div class="row">
                 <mat-form-field class="job-title">
                     <mat-label> Job Title </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput ng-required="True" formControlName="jobTitle">
                 </mat-form-field>
                 <mat-form-field class="expected-hours">
                     <mat-label> Expected hr/week </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput ng-required="True" formControlName="expectedHours">
                 </mat-form-field>
                 <mat-form-field class="location">
                     <mat-label> Location </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput ng-required="True" formControlName="location">
                 </mat-form-field>
             </div>
             <div class="row">
                 <mat-form-field class="job-description">
                     <mat-label> Job Description </mat-label>
-                    <textarea matInput placeholder="Write description here." ng-required="True"> </textarea>
+                    <textarea matInput placeholder="Write description here." ng-required="True" formControlName="jobDescription"> </textarea>
                 </mat-form-field>
             </div>
-        </div>
+        </form>
         <div class="submit-button">
-            <button mat-flat-button class="submit-opportunity"> Submit Opportunity</button>
+            <button mat-flat-button class="submit-opportunity" (click) = "getFormInfo()"> Submit Opportunity</button>
         </div>
         
     </mat-card>
