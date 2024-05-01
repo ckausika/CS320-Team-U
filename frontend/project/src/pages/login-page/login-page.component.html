@@ -3,17 +3,18 @@
         <div class="login-content">
             <h1 class="login-text">Log in</h1>
             <mat-form-field class="login-item">
-                <mat-label>Enter your school email</mat-label>
-                <input matInput placeholder="student@umass.edu">
+                <mat-label>Enter your username</mat-label>
+                <input matInput placeholder="student123" [(ngModel)]="username" required>
             </mat-form-field>
-            <mat-form-field class="login-item">
+            <mat-form-field class="login-item" style="margin-bottom: -1.25em">
                 <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
+                <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required>
                 <button mat-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [disableRipple]="true">
                     {{hide ? "show" : "hide"}}
                 </button>
             </mat-form-field>
-            <button mat-flat-button routerLink="" class="login-button">Log in</button>
+            <p class="error-text">{{ error }}</p>
+            <button mat-flat-button (click)="login()" class="login-button">Log in</button>
         </div>
     </mat-card>
 </div>

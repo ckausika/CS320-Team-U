@@ -33,7 +33,7 @@
 
 .divider-container {
     width: 100%;
-    padding: 22.4px 0px;
+    padding: 20px 0px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -54,4 +54,11 @@
     color: white;
     font-size: 28px;
     font-weight: 500;
+}
+
+.error-text {
+    color: red;
+    text-align: center;
+    padding: 10px 0px;
+    margin: 0px;
 }

@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { jwtDecode } from "jwt-decode";
 import { Observable, catchError } from 'rxjs';
-import { Parameter } from '../models/requests';
+import { SignUpInput, Parameter, LogInInput } from '../models/requests';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ export class DataService {
   private readonly ROOT_URL = 'http://localhost:5000/api';
   labs: any[] = [];
   professors: any[] = [];
+  user: User | undefined;
 
   constructor(private http: HttpClient) {}
 
@@ -28,13 +31,21 @@ export class DataService {
     );
   }
 
+  post(endpoint: string, body: any): Observable<any> {
+    return this.http.post(`${this.ROOT_URL}${endpoint}`, body).pipe(
+      catchError((error) => {
+        console.error('Error making HTTP request', error);
+        return error;
+      })
+    );
+  }
+
   fetchLabData() {
     const params = [{ param: 'name', value: '' }];
     const obs = this.get('/lab', params);
     obs.subscribe({
       next: (data) => {
         this.labs = data.Data;
-        console.log('Lab data: ' + this.labs);
       },
       error: (error) => console.error('Failed to fetch data:', error)
     });
@@ -43,11 +54,32 @@ export class DataService {
 
   fetchProfessorData() {
     const params = [{ param: 'name', value: '' }];
-    const obs = this.get('/professor', params)
+    const obs = this.get('/professor', params);
     obs.subscribe({
       next: (data) => {
         this.professors = data.Data;
-        console.log('Professor data: ' + this.professors);
+      },
+      error: (error) => console.error('Failed to fetch data:', error)
+    });
+    return obs;
+  }
+
+  signUp(payload: SignUpInput) {
+    const obs = this.post('/auth/createaccount', payload);
+    obs.subscribe({
+      next: (data) => {
+        this.user = {credential: data.Token, user: jwtDecode(data.Token)};
+      },
+      error: (error) => console.error('Failed to fetch data:', error)
+    });
+    return obs;
+  }
+
+  logIn(payload: LogInInput) {
+    const obs = this.post('/auth/login', payload);
+    obs.subscribe({
+      next: (data) => {
+        this.user = {credential: data.Token, user: jwtDecode(data.Token)};
       },
       error: (error) => console.error('Failed to fetch data:', error)
     });
