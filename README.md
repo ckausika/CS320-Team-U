@@ -19,9 +19,6 @@ Project Manager: Pablo Almeida - [@pabloooooo](https://www.github.com/pabloooooo
 - Michaela Gay - [@Michaela889](https://www.github.com/Michaela889)
 - Chandni Kausika - [@ckausika](https://www.github.com/ckausika)
 
-## Front End
-TBD
-
 ## Back End
 ### Web Server
 Our project's web server is built with Python and the Flask Web Framework. The web server handles API endpoint routing as well as the site's authentication system and any data retrieval from the project's database.
