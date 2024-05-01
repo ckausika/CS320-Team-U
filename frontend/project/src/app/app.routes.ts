@@ -39,6 +39,8 @@ export const routes: Routes = [
         path: 'create-opportunity',
         title: 'Create Opportunity Page',
         component: CreateOpportunityPageComponent
+    },
+    {
         path: 'help',
         title: 'Help Page',
         component: HelpPageComponent
