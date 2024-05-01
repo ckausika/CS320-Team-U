@@ -54,6 +54,10 @@ def accountCreate(username, password, email, role):
     if foundAccount is None:
         # The account does not exist in the DB!
 
+        # If the person isn't a professor then default them to being a Student
+        if role != "Professor":
+            role = "Student"
+
         # Insert a new user in the database
         insert_user(email, loweredName, hashPassword(password), role) # CHECK IF FAILURE???
 
@@ -72,16 +76,9 @@ def accountLogin(username, password):
     if foundAccount is None:
         return False, "INVALID"
 
-    if(determineHashMatch(foundAccount["Pwd"], password)):
-    #if(determineHashMatch(password, foundAccount["password"])):
+    if(determineHashMatch(foundAccount[0]["Pwd"], password)):
         # If the two passwords match then generate a token and send to the user!
         return True, generateToken(loweredName)
     else:
         # If the password is not correct then return false!
         return False, "INVALID"
-
-    #return verifyUserByToken(generateToken(username))
-
-# Perform an authentication request given a token
-def authConnect(token):
-    return False
