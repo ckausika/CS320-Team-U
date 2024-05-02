@@ -3,17 +3,14 @@
     flex-direction: column;
 }
 
-.title {
-    display: flex;
-    color: black;
-    background-color: white;
-    padding-left: 23px;
-}
-
 .navbar {
     display: flex;
     justify-content: space-between;
     background-color: #940a00;
+}
+
+.navbar-button {
+    color: white !important;
 }
 
 .opportunity-dropdown {

@@ -40,8 +40,10 @@ export class DataService {
     );
   }
 
-  fetchLabData() {
-    const params = [{ param: 'name', value: '' }];
+  fetchLabData(params?: Parameter[]) {
+    if (!params) {
+      params = [{ param: 'name', value: '' }];
+    }
     const obs = this.get('/lab', params);
     obs.subscribe({
       next: (data) => {
@@ -52,8 +54,10 @@ export class DataService {
     return obs;
   }
 
-  fetchProfessorData() {
-    const params = [{ param: 'name', value: '' }];
+  fetchProfessorData(params?: Parameter[]) {
+    if (!params) {
+      params = [{ param: 'name', value: '' }];
+    }
     const obs = this.get('/professor', params);
     obs.subscribe({
       next: (data) => {

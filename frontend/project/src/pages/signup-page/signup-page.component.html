@@ -2,28 +2,30 @@
     <mat-card class="signup-card">
       <div class="signup-content">
         <h1 class="signup-text">Sign Up</h1>
-        <mat-form-field class="signup-item">
+        <mat-form-field appearance="outline" class="signup-item">
           <mat-label>Enter your username</mat-label>
           <input matInput placeholder="student123" [(ngModel)]="username" required>
         </mat-form-field>
-        <mat-form-field class="signup-item">
+        <mat-form-field appearance="outline" class="signup-item">
           <mat-label>Enter your school email</mat-label>
           <input matInput placeholder="student@umass.edu" [(ngModel)]="email" required>
         </mat-form-field>
-        <mat-form-field class="signup-item">
-          <mat-label>Enter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required>
-          <button mat-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [disableRipple]="true">
-            {{hide ? 'show' : 'hide'}}
-          </button>
-        </mat-form-field>
-        <mat-form-field class="signup-item">
-          <mat-label>Re-enter your password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="rePassword">
-          <button mat-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [disableRipple]="true">
-            {{hide ? 'show' : 'hide'}}
-          </button>
-        </mat-form-field>
+        <div style="display: flex;">
+          <mat-form-field appearance="outline" class="signup-item" style="margin-right: 10px;">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required>
+            <button mat-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [disableRipple]="true">
+              {{hide ? 'show' : 'hide'}}
+            </button>
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="signup-item" style="margin-left: 10px;">
+            <mat-label>Re-enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="rePassword" required>
+            <button mat-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [disableRipple]="true">
+              {{hide ? 'show' : 'hide'}}
+            </button>
+          </mat-form-field>
+        </div>
         <mat-button-toggle-group class="signup-item" (change)="role = $event.value">
           <mat-button-toggle value="Student" style="width: 50%;">Student</mat-button-toggle>
           <mat-button-toggle value="Professor" style="width: 50%;">Professor</mat-button-toggle>
