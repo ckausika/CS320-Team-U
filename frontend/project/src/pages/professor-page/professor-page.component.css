@@ -1,9 +1,27 @@
+.professor-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100dvh - 128px);
+    background-color:#f9f9f9;
+}
+
+.search-field {
+    width: 320px;
+    margin: 10px auto -1.25em auto;
+}
+
+.spinner {
+    flex-grow: 1;
+    display: flex;
+    margin: auto;
+}
+
 .professors {
     display: flex;
     flex-wrap: wrap;
-    overflow-y: scroll;
-    max-height: 543px;
-    padding: 4px;
+    overflow-y: auto;
+    margin: 4px;
+    flex-grow: 1;
 }
 
 .professor {

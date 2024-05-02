@@ -1,27 +1,35 @@
-<div>
-    <div class="professors">
+<div class="professor-container">
+    <mat-form-field appearance="outline" class="search-field">
+        <mat-label>Search</mat-label>
+        <input matInput #searchInput placeholder="Enter a professor name" (keydown.enter)="onSearch(searchInput.value)">      
+        <button mat-icon-button matSuffix (click)="onSearch(searchInput.value)">
+          <mat-icon>search</mat-icon>
+        </button>
+    </mat-form-field>
+    <mat-progress-spinner *ngIf="isLoading" mode="indeterminate" class="spinner"></mat-progress-spinner>
+    <div *ngIf="!isLoading" class="professors">
         <div *ngFor="let professor of visibleProfessors" class="professor">
-        <mat-card class="card">
-            <div class="left">
-                <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="profile-img">
-                <div class="card-info">
-                    <mat-card-header>
-                        <mat-card-title>{{ professor.Name }}</mat-card-title>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p *ngIf="professor.Position !== 'NA'">{{ professor.Position }}</p>
-                        <p *ngIf="professor.Office !== 'NA'">{{ professor.Office }}</p>
-                        <p *ngIf="professor.Phone !== 'NA'">{{ professor.Phone }}</p>
-                        <p *ngIf="professor.Email !== 'NA'">{{ professor.Email }}</p>
-                    </mat-card-content>
+            <mat-card class="card">
+                <div class="left">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="profile-img">
+                    <div class="card-info">
+                        <mat-card-header>
+                            <mat-card-title>{{ professor.Name }}</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p *ngIf="professor.Position !== 'NA'">{{ professor.Position }}</p>
+                            <p *ngIf="professor.Office !== 'NA'">{{ professor.Office }}</p>
+                            <p *ngIf="professor.Phone !== 'NA'">{{ professor.Phone }}</p>
+                            <p *ngIf="professor.Email !== 'NA'">{{ professor.Email }}</p>
+                        </mat-card-content>
+                    </div>
                 </div>
-            </div>
-            <div class="read-more-icon">
-                <button *ngIf="professor.Homepage !== 'NA'" mat-icon-button (click)="goToLink(professor.Homepage)">
-                    <mat-icon>read_more</mat-icon>
-                </button>
-            </div>
-        </mat-card>
+                <div class="read-more-icon">
+                    <button *ngIf="professor.Homepage !== 'NA'" mat-icon-button (click)="goToLink(professor.Homepage)">
+                        <mat-icon>read_more</mat-icon>
+                    </button>
+                </div>
+            </mat-card>
         </div>
     </div>
     <mat-paginator [length]="professors.length" [pageSize]="15" [pageSizeOptions]="[15, 30, 60]" (page)="changePage($event)"></mat-paginator>
