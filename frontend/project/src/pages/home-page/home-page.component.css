@@ -6,10 +6,12 @@
 }
 .about h2{
     font-size: 50px; 
+    
 }
 .about p{
     font-size: 20px;
     line-height: 2;
+   
 }
 .about img{
     margin-left: 3%;
@@ -19,15 +21,15 @@
     display:flex;
 }
 .info{
-    height: 20vh;
+    height: 25%;
     background-color: #891D1D;
     display:flex;
 }
 .info img{
     height: 100%;
-    margin-right: 67%;
+    margin-right: 60%;
 }
 .foot{
-    height: 100%;
+    margin-top: 1%;
     color: white;
 }
