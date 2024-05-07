@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 55%;
+    width: 50%;
     color: rgb(230, 230, 230);
     
 }
@@ -98,7 +98,7 @@
     justify-content: right;
     align-items: right;
     flex-direction: column;
-    width: 45%;
+    width: 50%;
     color: rgb(230, 230, 230);
     padding-left:1%;
 }
@@ -106,9 +106,13 @@
 .position-content {
     padding-left:1%;
 }
-
+.job-buttons {
+    display:flex;
+    align-items: flex-end;
+}
 .save-job {
     margin:1%;
+    
     background-color: #940a00;
 }
 .select-job {
