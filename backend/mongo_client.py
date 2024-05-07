@@ -74,6 +74,20 @@ def get_all_users() -> list[dict]:
     result = users_collection.find()
     return obj_to_list(result)
 
+def insert_opportunity(Title, firstName, lastName, emailAddress, jobTitle, expectedTime, location, jobDescription):
+    opp_collection = mydb["opportunities_information"]
+    insert_id = opp_collection.insert_one({
+        "Title" : Title, 
+        "firstName" : firstName, 
+        "lastName" : lastName, 
+        "emailAddress" : emailAddress, 
+        "jobTitle" : jobTitle, 
+        "expectedTime" : expectedTime, 
+        "location" : location, 
+        "jobDescription" : jobDescription
+        })
+    return insert_id
+
 def insert_user(email: str, name: str, pwd: str, role: str = "Student") -> object: 
     users_collection = mydb["user_information"]
     insert_id = users_collection.insert_one({"Email":email, "Name":name, "Pwd":pwd, "Role":role})
