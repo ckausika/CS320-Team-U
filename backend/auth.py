@@ -18,8 +18,8 @@ ph = PasswordHasher() # Argon 2 hashing object
 #
 
 # Generate a JWT token based off the username and the JWT secret
-def generateToken(user):
-    encoded_jwt = jwt.encode({"user": user.lower()}, JWTsecret, algorithm="HS256")
+def generateToken(user, email, role):
+    encoded_jwt = jwt.encode({"user": user, "email": email, "role": role}, JWTsecret, algorithm="HS256")
 
     return encoded_jwt;
 
@@ -41,7 +41,7 @@ def determineHashMatch(storedPassHash, inputPass):
     try:
         ph.verify(storedPassHash, inputPass)
         return True
-    except ph.VerifySignatureMismatch:
+    except:
         return False
 
 # Create an account given a username and password
@@ -50,8 +50,7 @@ def accountCreate(username, password, email, role):
     loweredName = username.lower()
 
     foundAccount = get_user_by_username(loweredName)
-
-    if foundAccount is None:
+    if len(foundAccount) == 0:
         # The account does not exist in the DB!
 
         # If the person isn't a professor then default them to being a Student
@@ -60,9 +59,8 @@ def accountCreate(username, password, email, role):
 
         # Insert a new user in the database
         insert_user(email, loweredName, hashPassword(password), role) # CHECK IF FAILURE???
-
         # Return a success response and the token
-        return True, generateToken(loweredName)
+        return True, generateToken(username, email, role)
     else:
         return False, "Already exists!"
 
@@ -78,7 +76,7 @@ def accountLogin(username, password):
 
     if(determineHashMatch(foundAccount[0]["Pwd"], password)):
         # If the two passwords match then generate a token and send to the user!
-        return True, generateToken(loweredName)
+        return True, generateToken(username, foundAccount[0]["Email"], foundAccount[0]["Role"])
     else:
         # If the password is not correct then return false!
         return False, "INVALID"
