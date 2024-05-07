@@ -18,6 +18,7 @@
 
 .professors {
     display: flex;
+    align-content: flex-start;
     flex-wrap: wrap;
     overflow-y: auto;
     margin: 4px;
