@@ -1,0 +1,2 @@
+URL='mongodb+srv://sample:sample123@cluster0.qhjlnkv.mongodb.net/?retryWrites=true&w=majority'
+DB='sample_database'
