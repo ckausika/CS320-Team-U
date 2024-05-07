@@ -3,15 +3,38 @@
     flex-direction: column;
 }
 
-.title {
-    display: flex;
-    color: black;
-    background-color: white;
-    padding-left: 23px;
-}
-
 .navbar {
     display: flex;
     justify-content: space-between;
     background-color: #940a00;
+}
+
+.navbar-button {
+    color: white !important;
+}
+
+.navbar-left button:hover,
+.navbar-right button:hover {
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.opportunity-dropdown {
+    background-color: #940a00 !important; 
+    width:fit-content;
+}
+
+.opportunity-dropdown.--mat-menu-container {
+    color: #940a00 !important; 
+}
+
+.opp-buttons {
+    background-color: #940a00;
+    width: 90%;
+    margin-left:5%;
+    margin-right:5%;
+    margin-bottom:1%
+}
+
+.html {
+    background-color: blue;
 }

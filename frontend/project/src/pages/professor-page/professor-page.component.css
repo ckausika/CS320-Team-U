@@ -1,0 +1,79 @@
+.professor-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100dvh - 128px);
+    background-color:#f9f9f9;
+}
+
+.search-field {
+    width: 320px;
+    margin: 10px auto -1.25em auto;
+}
+
+.spinner {
+    flex-grow: 1;
+    display: flex;
+    margin: auto;
+}
+
+.professors {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    margin: 4px;
+    flex-grow: 1;
+}
+
+.professor {
+    flex-basis: calc(33.33% - 8px);
+    margin: 4px;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+}
+
+.left {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.profile-img {
+    height: 100px;
+    width: 100px;
+    padding-right: 8px;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.read-more-icon {
+    display: flex;
+    height: 168px;
+    align-items: flex-start;
+    padding: 0px 16px;
+}
+
+@media (max-width: 1000px) {
+    .professor {
+        flex-basis: calc(100% - 8px);
+    }
+}
+
+@media (min-width: 1001px) and (max-width: 1450px) {
+    .professor {
+        flex-basis: calc(50% - 8px);
+    }
+}

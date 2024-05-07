@@ -5,28 +5,29 @@
     </mat-toolbar-row>
     <mat-toolbar-row class="navbar">
       <div class="navbar-left">
-        <button mat-button routerLink="/">
+        <button mat-button routerLink="/" class="navbar-button" >
           Home
         </button>
-        <button mat-button routerLink="/research">
+        <button mat-button routerLink="/research" class="navbar-button">
           Research
         </button>
-        <button mat-button routerLink="/">
+        <button mat-button routerLink="/professor" class="navbar-button">
           Professor
         </button>
-        <button mat-button routerLink="/application">
-          Application
+        <button mat-button [matMenuTriggerFor]="opportunityDropdown" class="opportunity-dropdown navbar-button">Opportunity</button>
+        <mat-menu #opportunityDropdown="matMenu" class="opportunity-dropdown">
+          <button mat-button create-opp routerLink="/create-opportunity" class="opp-buttons navbar-button">Create</button>
+          <button mat-button apply-opp routerLink="/application" class="opp-buttons navbar-button">Apply</button>
+        </mat-menu>
+        <button mat-button routerLink="/help" class="navbar-button">
+          Help
         </button>
-        <button mat-button (click)="fetchLabData()">Fetch Lab Data</button>
-        <div *ngIf="data">
-          Check the console for data output.
-        </div>
       </div>
       <div class="navbar-right">
-        <button mat-button routerLink="/login">
+        <button mat-button routerLink="/login" class="navbar-button">
           Log In
         </button>
-        <button mat-button routerLink="/signup">
+        <button mat-button routerLink="/signup" class="navbar-button">
           Sign Up
         </button>
       </div>

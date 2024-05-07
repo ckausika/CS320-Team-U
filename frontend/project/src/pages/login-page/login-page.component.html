@@ -2,40 +2,19 @@
     <mat-card class="login-card">
         <div class="login-content">
             <h1 class="login-text">Log in</h1>
-            <mat-form-field class="login-item">
-                <mat-label>Enter your school email</mat-label>
-                <input matInput placeholder="student@umass.edu">
+            <mat-form-field appearance="outline" class="login-item">
+                <mat-label>Enter your username</mat-label>
+                <input matInput placeholder="student123" [(ngModel)]="username" required>
             </mat-form-field>
-            <mat-form-field class="login-item">
+            <mat-form-field appearance="outline" class="login-item" style="margin-bottom: -1.25em">
                 <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'">
+                <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required>
                 <button mat-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [disableRipple]="true">
                     {{hide ? "show" : "hide"}}
                 </button>
             </mat-form-field>
-            <button mat-flat-button routerLink="" class="login-button">Log in</button>
-            <div class="divider-container">
-                <div class="line"><mat-divider></mat-divider></div>
-                <div class="divider-text mat-typography">or</div>
-                <div class="line"><mat-divider></mat-divider></div>
-            </div>
-            <div id="g_id_onload"
-                data-client_id="579614954541-ame8nr93nlu3d87hhteal8f4qg7ipetk.apps.googleusercontent.com"
-                data-context="signin"
-                data-ux_mode="popup"
-                data-login_uri="http://localhost:5000/login"
-                data-auto_select="true"
-                data-itp_support="true">
-            </div>
-
-            <div class="g_id_signin"
-                data-type="standard"
-                data-theme="outline"
-                data-text="signin_with"
-                data-size="large"
-                data-logo_alignment="center"
-                data-width="320">
-            </div>
+            <p class="error-text">{{ error }}</p>
+            <button mat-flat-button (click)="login()" class="login-button">Log in</button>
         </div>
     </mat-card>
 </div>
