@@ -16,28 +16,46 @@ def auth_api_routing(endpoint):
     # Determine which endpoint the client is attempting to use
     match escape(endpoint):
         case "createaccount":
-            result = accountCreate(request.form['username'], request.form['password'], request.form['email'], request.form['role'])
+            try:
+                content = request.get_json(silent=False)
 
-            if result[0]:
+                result = accountCreate(content['username'], content['password'], content['email'], content['role'])
+
+                if result[0]:
+                    responseData = {
+                        "Success": True,
+                        "Token": result[1]
+                    }
+                else:
+                    responseData = {
+                        "Success": False,
+                        "SuccessMessage": "The server was unable to create the account!"
+                    }
+            except: 
+                # Catch possible errors arising from invalid/no JSON being given
                 responseData = {
                     "Success": False,
-                    "Token": result[1]
-                }
-            else:
-                responseData = {
-                    "Success": False,
-                    "SuccessMessage": "The server was unable to create the account!"
+                    "SuccessMessage": "The server was unable to create the account! Check your JSON?"
                 }
         case "login":
-            result = accountLogin(request.form['username'], request.form['password'])
-            if result[0]:
-                # Returns JSON with token for the user.
-                responseData = {
-                    "Success": True,
-                    "Token": result[1]
-                }
-            else:
-                # A token was not able to be created!
+            try:
+                content = request.get_json(silent=False)
+
+                result = accountLogin(content['username'], content['password'])
+                if result[0]:
+                    # Returns JSON with token for the user.
+                    responseData = {
+                        "Success": True,
+                        "Token": result[1]
+                    }
+                else:
+                    # A token was not able to be created!
+                    responseData = {
+                        "Success": False,
+                        "SuccessMessage": "The server was unable to log into the account!"
+                    }
+            except:
+                # 
                 responseData = {
                     "Success": False,
                     "SuccessMessage": "The server was unable to log into the account!"
