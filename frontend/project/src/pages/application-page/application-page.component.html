@@ -37,7 +37,7 @@
             <div>
                 <mat-form-field class="app-comment-box">
                     <mat-label> Comments </mat-label>
-                    <textarea matInput placeholder="Write any comments here." ng-required="True"> </textarea>
+                    <textarea rows="8" matInput placeholder="Write any comments here." ng-required="True"> </textarea>
                 </mat-form-field>
             </div>
             <div>
@@ -89,8 +89,10 @@
                 -
                 <br>
             </h5>
-            <button mat-flat-button class="select-job"> Select Job</button>
-            <button mat-flat-button class="save-job"> Save Job</button>
+            <div class="job-buttons">
+                <button mat-flat-button class="select-job"> Select Job</button>
+                <button mat-flat-button class="save-job"> Save Job</button>
+            </div>
             
         </div>
     </mat-card>

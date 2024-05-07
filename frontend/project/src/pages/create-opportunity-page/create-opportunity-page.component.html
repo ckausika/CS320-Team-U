@@ -1,45 +1,45 @@
 <div class="create-form">
     <mat-card class="create-form-card">
-        <form class="form-content" [formGroup] = "createOppForm"> 
+        <form class="form-content" [formGroup] = "createOppForm" appearance="outline"> 
             <h1 class="create-form-title">
                 Create Form
             </h1>
             <div class="row">
-                <mat-form-field class="title">
+                <mat-form-field class="title" appearance="outline">
                     <mat-label> Your Title </mat-label>
                     <input matInput ng-required="True" formControlName="yourTitle">
                 </mat-form-field>
-                <mat-form-field class="first-name">
+                <mat-form-field class="first-name" appearance="outline">
                     <mat-label> First Name </mat-label>
                     <input matInput id = firstName ng-required="True" formControlName="firstName">
                 </mat-form-field>
-                <mat-form-field class="last-name">
+                <mat-form-field class="last-name" appearance="outline">
                     <mat-label> Last Name </mat-label>
                     <input matInput ng-required="True" formControlName="lastName">
                 </mat-form-field>
-                <mat-form-field class="email">
+                <mat-form-field class="email" appearance="outline">
                     <mat-label> Email Address </mat-label>
                     <input matInput ng-required="True" formControlName="emailAddress">
                 </mat-form-field>
             </div>
             <div class="row">
-                <mat-form-field class="job-title">
+                <mat-form-field class="job-title" appearance="outline">
                     <mat-label> Job Title </mat-label>
                     <input matInput ng-required="True" formControlName="jobTitle">
                 </mat-form-field>
-                <mat-form-field class="expected-hours">
+                <mat-form-field class="expected-hours" appearance="outline">
                     <mat-label> Expected hr/week </mat-label>
                     <input matInput ng-required="True" formControlName="expectedHours">
                 </mat-form-field>
-                <mat-form-field class="location">
+                <mat-form-field class="location" appearance="outline">
                     <mat-label> Location </mat-label>
                     <input matInput ng-required="True" formControlName="location">
                 </mat-form-field>
             </div>
             <div class="row">
-                <mat-form-field class="job-description">
+                <mat-form-field class="job-description" appearance="outline">
                     <mat-label> Job Description </mat-label>
-                    <textarea matInput placeholder="Write description here." ng-required="True" formControlName="jobDescription"> </textarea>
+                    <textarea rows="10" matInput placeholder="Write description here." ng-required="True" formControlName="jobDescription"> </textarea>
                 </mat-form-field>
             </div>
         </form>
