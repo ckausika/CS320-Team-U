@@ -1,17 +1,18 @@
+.stockimage{
+    object-fit: cover;
+}
 .about{
     height: 57h;
     padding: 3%;
-    background-color: #9014147c;
+    margin-top: 1%;
     min-width: 800px;
 }
 .about h2{
     font-size: 50px; 
-    
 }
 .about p{
     font-size: 20px;
-    line-height: 2;
-   
+    line-height: 2;  
 }
 .about img{
     margin-left: 3%;

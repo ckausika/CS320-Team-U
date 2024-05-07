@@ -15,7 +15,7 @@
 
 .navbar-left button:hover,
 .navbar-right button:hover {
-  background-color: rgba(0, 0, 0, 0.5); /* Change to whatever color you prefer */
+  background-color: rgba(0, 0, 0, 0.5); 
 }
 
 .opportunity-dropdown {
