@@ -18,7 +18,7 @@ Project Manager: Pablo Almeida - [@pabloooooo](https://www.github.com/pabloooooo
 Our project's web server is built with Python and the Flask Web Framework. The web server handles API endpoint routing as well as the site's authentication system and any data retrieval from the project's database.
 
 ### Web Scraper
-Our python program scrapes results from several publically available Manning CICS webpages for information about faculty, labs, research areas and ongoing research projects.  
+Our python program scrapes results from several publically available Manning CICS webpages for information about faculty, labs, research areas and ongoing research projects. Check the scraper folder for more information.
 
 ### Database
 MongoDB Atlas Database | Multi-Cloud Database Service: currently one database with 5 collections.
