@@ -34,6 +34,13 @@ MongoDB Atlas Database | Multi-Cloud Database Service: currently one database wi
 
 ### Backend Virtual Environment Setup
 
+#### Windows
+```
+  py -m venv .venv                       # Create venv
+  py -m pip install -r requirements.tx   # Install python packages
+```
+
+#### Mac OS / Linux
 ```
   cd backend
   python -m venv .venv              # Create venv
