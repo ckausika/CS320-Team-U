@@ -23,12 +23,12 @@ Project Manager: Pablo Almeida - [@pabloooooo](https://www.github.com/pabloooooo
 To integrate the scraped data from CSV files into MongoDB follow these steps:
 
 ### 1. Ensure MongoDB Setup
-Ensure you have set up MongoDB Atlas by signing up for an account and creating a new cluster in the MongoDB Atlas dashboard. Configure cluster settings, including cloud provider (e.g., AWS, Azure, Google Cloud), region, and security options. And choose a cluster tier, this project uses the free tier.
+Ensure you have set up [MongoDB Atlas](https://www.mongodb.com/products/platform/atlas-database) by signing up for an account and creating a new cluster in the MongoDB Atlas dashboard. Configure cluster settings, including cloud provider (e.g., AWS, Azure, Google Cloud), region, and security options. And choose a cluster tier, this project uses the free tier.
 
 #### Set Up Security
-Network Access: Configure network access to restrict connections to your cluster based on IP addresses.
-Database Access: Set up database users and passwords to control access to your databases.
-Encryption: Enable encryption at rest and in transit to secure your data.
+- Network Access: Configure network access to restrict connections to your cluster based on IP addresses.
+- Database Access: Set up database users and passwords to control access to your databases.
+- Encryption: Enable encryption at rest and in transit to secure your data.
 
 ### 2. Identify CSV Files
 Locate the CSV files containing the scraped data. These files should contain structured data, organized into rows and columns, representing faculty information, lab details, research areas, and ongoing projects.
@@ -52,6 +52,6 @@ mongoimport --db <database_name> --collection <collection_name> --type csv --hea
 Run the `mongoimport` command in your terminal, providing the necessary parameters to import each CSV file into the corresponding MongoDB collection.
 
 ### 6. Verify Data Import
-After executing the import command, verify that the data has been successfully imported into your MongoDB collections. You can use MongoDB Compass or the MongoDB shell to inspect the collections and ensure that the data matches your expectations.
+After executing the import command, verify that the data has been successfully imported into your MongoDB collections. You can use [MongoDB Compass](https://www.mongodb.com/products/tools/compass) or the [MongoDB shell](https://www.mongodb.com/products/tools/shell) to inspect the collections and ensure that the data matches your expectations.
 
 By following these steps, you can import the scraped data from CSV files into MongoDB, enabling your backend servers to access and utilize the data for the CICS Undergraduate Research Finder app.
