@@ -33,6 +33,10 @@
     background-color: #940a00 !important;
 }
 
+.login-button:disabled {
+    background-color: #d1a3a2 !important;
+}
+
 .divider-container {
     width: 100%;
     padding: 22.4px 0px;

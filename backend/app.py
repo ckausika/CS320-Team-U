@@ -23,19 +23,22 @@ def auth_api_routing(endpoint):
 
                 if result[0]:
                     responseData = {
-                        "Success": True,
-                        "Token": result[1]
+                        "Token": result[1],
+                        "Error": None,
+                        "ErrorMessage": None
                     }
                 else:
                     responseData = {
-                        "Success": False,
-                        "SuccessMessage": "The server was unable to create the account!"
+                        "Token": None,
+                        "Error": "The server was unable to create the account!",
+                        "ErrorMessage": "Invalid account information"
                     }
             except: 
                 # Catch possible errors arising from invalid/no JSON being given
                 responseData = {
-                    "Success": False,
-                    "SuccessMessage": "The server was unable to create the account! Check your JSON?"
+                    "Token": None,
+                    "Error": "The server was unable to create the account! Check your JSON?",
+                    "ErrorMessage": "Server failure"
                 }
         case "login":
             try:
@@ -45,26 +48,30 @@ def auth_api_routing(endpoint):
                 if result[0]:
                     # Returns JSON with token for the user.
                     responseData = {
-                        "Success": True,
-                        "Token": result[1]
+                        "Token": result[1],
+                        "Error": None,
+                        "ErrorMessage": None
                     }
                 else:
                     # A token was not able to be created!
                     responseData = {
-                        "Success": False,
-                        "SuccessMessage": "The server was unable to log into the account!"
+                        "Token": None,
+                        "Error": "The server was unable to log into the account!",
+                        "ErrorMessage": "Wrong username or password"
                     }
             except:
-                # 
+                # Catch possible errors arising from invalid/no JSON being given
                 responseData = {
-                    "Success": False,
-                    "SuccessMessage": "The server was unable to log into the account!"
+                    "Token": None,
+                    "Error": "The server was unable to log in! Check your JSON?",
+                    "ErrorMessage": "Server failure"
                 }
         case _:
             # The endpoint does not exist
             responseData = {
-                "Success": False,
-                "SuccessMessage": f'Unable to handle endpoint: {escape(endpoint)}! Is the endpoint spelled properly?',
+                "Token": None,
+                "Error": f'Unable to handle endpoint: {escape(endpoint)}! Is the endpoint spelled properly?',
+                "ErrorMessage": "Server failure"
             }
     
     return jsonify(responseData)

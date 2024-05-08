@@ -24,11 +24,14 @@
         </button>
       </div>
       <div class="navbar-right">
-        <button mat-button routerLink="/login" class="navbar-button">
+        <button mat-button routerLink="/login" *ngIf="!dataService.user" class="navbar-button">
           Log In
         </button>
-        <button mat-button routerLink="/signup" class="navbar-button">
+        <button mat-button routerLink="/signup" *ngIf="!dataService.user" class="navbar-button">
           Sign Up
+        </button>
+        <button mat-button *ngIf="dataService.user" (click)="logOut()" class="navbar-button">
+          Log Out
         </button>
       </div>
     </mat-toolbar-row>

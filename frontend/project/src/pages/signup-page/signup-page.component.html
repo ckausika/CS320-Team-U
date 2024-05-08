@@ -31,7 +31,7 @@
           <mat-button-toggle value="Professor" style="width: 50%;">Professor</mat-button-toggle>
         </mat-button-toggle-group>
         <p class="error-text">{{ error }}</p>
-        <button mat-flat-button (click)="signup()" class="signup-button">Sign Up</button>
+        <button mat-flat-button (click)="signup()" [disabled]="loading" class="signup-button">Sign Up</button>
       </div>
     </mat-card>
 </div>

@@ -33,6 +33,10 @@
     background-color: #940a00 !important;
 }
 
+.signup-button:disabled {
+    background-color: #d1a3a2 !important;
+}
+
 .divider-text {
     padding-left: 10px;
     padding-right: 10px;
