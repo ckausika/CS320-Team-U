@@ -20,7 +20,7 @@ Our project's web server is built using Python and the Flask Web Framework. The 
 - **Database Interaction:** Facilitation of data retrieval and storage operations with the project's MongoDB database.
 
 ### Web Scraper
-Python-based web scraper responsible for gathering data from multiple publicly available Manning CICS webpages. The scraper extracts information related to faculty, labs, research areas, and ongoing research projects. [Scraper ReadME](scraper/README.md)
+Python-based web scraper responsible for gathering data from multiple publicly available Manning CICS webpages. The scraper extracts information related to faculty, labs, research areas, and ongoing research projects. [Scraper ReadME](https://github.com/ckausika/CS320-Team-U/blob/main/scraper/README.md)
 
 ### Database
 MongoDB Atlas Database | Multi-Cloud Database Service: Key aspects of our database setup include:
