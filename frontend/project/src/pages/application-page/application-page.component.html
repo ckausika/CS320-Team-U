@@ -1,99 +1,96 @@
 <div class="application">
     <mat-card class="application-card">
         <div class="application-content">
-            <h1 class="application-title">
+            <h1 class="application-title" style="color: rgb(131, 122, 122);">
                 Application Form
             </h1>
 
             <div class="app-field-1">
-                <mat-form-field class = "first-name">
+                <mat-form-field class = "first-name" appearance="outline">
                     <mat-label> First Name </mat-label>
                     <input matInput ng-required="True">
                 </mat-form-field>
-                <mat-form-field class = "last-name">
+                <mat-form-field class = "last-name" appearance="outline">
                     <mat-label> Last Name </mat-label>
                     <input matInput ng-required="True">
                 </mat-form-field>
-                <mat-form-field class = "email">
+                <mat-form-field class = "email" appearance="outline">
                 <mat-label> Email Address </mat-label>
                 <input matInput placeholder="student@umass.edu" ng-required="True">
                 </mat-form-field>
             </div>
 
             <div class="app-field-2">
-                <mat-form-field class = "major">
+                <mat-form-field class = "major" appearance="outline">
                     <mat-label> Major </mat-label>
                     <input matInput ng-required="True">
                 </mat-form-field>
-                <mat-form-field class = "phone-num">
+                <mat-form-field class = "phone-num" appearance="outline">
                     <mat-label>Phone number</mat-label>
                     <input matInput placeholder="XXX-XXX-XXXX" ng-required="True">
                 </mat-form-field>
-                <mat-form-field class = "grad-year">
+                <mat-form-field class = "grad-year" appearance="outline">
                     <mat-label> Graduation Month/Year </mat-label>
                     <input matInput placeholder="Spring 2026" ng-required="True">
                 </mat-form-field>
             </div>
             <div>
-                <mat-form-field class="app-comment-box">
+                <mat-form-field class="app-comment-box" appearance="outline">
                     <mat-label> Comments </mat-label>
                     <textarea rows="8" matInput placeholder="Write any comments here." ng-required="True"> </textarea>
                 </mat-form-field>
             </div>
             <div>
-                <button mat-flat-button class="upload-resume"> Upload Resume</button>
-                <button mat-flat-button class="upload-cover-letter"> Upload Cover Letter</button>
+                <button mat-fab extended class="upload-resume"> Upload Resume</button>
+                <button mat-fab extended class="upload-cover-letter"> Upload Cover Letter</button>
             </div>
             <div class="space">
 
             </div>
             <div>
-                <button mat-flat-button class="submit-application"> Submit Application</button>
+                <button mat-fab extended class="submit-application"> Submit Application</button>
             </div>
         </div>
     </mat-card>
         
     <mat-card class="position-info">
-        <div class="position-content">
-            <h1 class="position-title">
-                Opportunity Title
-            </h1>
-            <h3>
-                Professor Name
-            </h3>
-            <h3>
-                Expected Hours
-            </h3>
-            <h3>
-                Location
-            </h3>
-            <h5>
-                Insert Description here... 
-                <br>
-                -
-                <br>
-                -
-                <br>
-                -
-                <br>
-                -
-                <br>
-                -
-                <br>
-                -
-                <br>
-                -
-                <br>
-                -
-                <br>
-                -
-                <br>
-            </h5>
-            <div class="job-buttons">
-                <button mat-flat-button class="select-job"> Select Job</button>
-                <button mat-flat-button class="save-job"> Save Job</button>
-            </div>
-            
+        <h1 class="position-title" style="color: rgb(131, 122, 122);">
+            Opportunity Title
+        </h1>
+        <h3 style="color: rgb(131, 122, 122);">
+            Professor Name
+        </h3>
+        <h3 style="color: rgb(131, 122, 122);">
+            Expected Hours
+        </h3>
+        <h3 style="color: rgb(131, 122, 122);">
+            Location
+        </h3>
+        <h5 style="color: rgb(131, 122, 122);">
+            Insert Description here... 
+            <br>
+            -
+            <br>
+            -
+            <br>
+            -
+            <br>
+            -
+            <br>
+            -
+            <br>
+            -
+            <br>
+            -
+            <br>
+            -
+            <br>
+            -
+            <br>
+        </h5>
+        <div class="white-space">
+
         </div>
+        <button mat-fab extended class="change-job" routerLink="/research"> Change Job</button>
     </mat-card>
 </div>

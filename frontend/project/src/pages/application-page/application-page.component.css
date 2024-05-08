@@ -103,18 +103,12 @@
     padding-left:1%;
 }
 
-.position-content {
-    padding-left:1%;
-}
-.job-buttons {
+.white-space {
     display:flex;
-    align-items: flex-end;
+    height:150px;
 }
-.save-job {
-    margin:1%;
-    
-    background-color: #940a00;
-}
-.select-job {
+
+.change-job {
+    align-self:baseline;
     background-color: #940a00;
 }

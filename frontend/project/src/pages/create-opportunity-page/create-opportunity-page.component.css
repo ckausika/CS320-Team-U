@@ -32,17 +32,15 @@
 }
 .job-description {
     margin-right:2%;
-    margin-top:1.5%;
+    margin-top:1%;
     width:80%;
 }
 .submit-opportunity {
-    margin:1%;
     background-color: #940a00;
 }
 
 .submit-button {
     width:15%;
-    background-color: #940a00;
-    margin:1%;  
     align-self:center;
+    margin-bottom:1%;
 }
