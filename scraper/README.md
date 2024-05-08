@@ -26,9 +26,9 @@ To integrate the scraped data from CSV files into MongoDB follow these steps:
 Ensure you have set up MongoDB Atlas by signing up for an account and creating a new cluster in the MongoDB Atlas dashboard. Configure cluster settings, including cloud provider (e.g., AWS, Azure, Google Cloud), region, and security options. And choose a cluster tier, this project uses the free tier.
 
 #### Set Up Security
-Network Access: Configure network access to restrict connections to your cluster based on IP addresses.
-Database Access: Set up database users and passwords to control access to your databases.
-Encryption: Enable encryption at rest and in transit to secure your data.
+- Network Access: Configure network access to restrict connections to your cluster based on IP addresses.
+- Database Access: Set up database users and passwords to control access to your databases.
+- Encryption: Enable encryption at rest and in transit to secure your data.
 
 ### 2. Identify CSV Files
 Locate the CSV files containing the scraped data. These files should contain structured data, organized into rows and columns, representing faculty information, lab details, research areas, and ongoing projects.
