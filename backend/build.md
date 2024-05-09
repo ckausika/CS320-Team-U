@@ -23,3 +23,11 @@
   source .venv/bin/activate         # Enter venv
   flask --app app run               # Run Flask App
 ```
+
+### Running Tests
+```
+  pip install coverage              # Install python coverage
+  coverage run -m unittest tests.py # Running Coverage
+  coverage report -m                # View coverage report
+  coverage html                     # View HTML version of coverage report
+```
