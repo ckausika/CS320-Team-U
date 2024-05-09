@@ -5,20 +5,18 @@
     </mat-toolbar-row>
     <mat-toolbar-row class="navbar">
       <div class="navbar-left">
-        <button mat-button routerLink="/" class="navbar-button">
+        <button mat-button routerLink="/" class="navbar-button" >
           Home
         </button>
         <button mat-button routerLink="/research" class="navbar-button">
-          Research
+          Find Research
         </button>
         <button mat-button routerLink="/professor" class="navbar-button">
-          Professor
+          Find Professor
         </button>
-        <button mat-button [matMenuTriggerFor]="opportunityDropdown" class="opportunity-dropdown navbar-button">Opportunity</button>
-        <mat-menu #opportunityDropdown="matMenu" class="opportunity-dropdown">
-          <button mat-button create-opp routerLink="/create-opportunity" class="opp-buttons navbar-button">Create</button>
-          <button mat-button apply-opp routerLink="/application" class="opp-buttons navbar-button">Apply</button>
-        </mat-menu>
+        <button mat-button create-opp routerLink="/create-opportunity" class="opp-buttons navbar-button">
+          Create Research Opportunity
+        </button>
         <button mat-button routerLink="/help" class="navbar-button">
           Help
         </button>

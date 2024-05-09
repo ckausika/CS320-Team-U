@@ -5,7 +5,7 @@ from auth import accountCreate, accountLogin, getUserFromToken
 from mongo_client import get_lab_by_name, get_professor_by_name
 
 app = Flask(__name__)
-# Eliminate CORS errors when making requests from front end
+# Allow Cross-Origin Resource Sharing to prevent CORS errors when making requests from the front end
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
@@ -13,21 +13,36 @@ cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Handle all Auth API endpoint routing
 @app.route("/api/auth/<endpoint>", methods = ['POST'])
 def auth_api_routing(endpoint):
+    """
+    Handle all authentication-related API requests.
+
+    This function routes requests to specific authentication endpoints
+    such as account creation and login.
+
+    Args:
+        endpoint (str): The specific endpoint to be handled.
+
+    Returns:
+        JSON: Response data including success status and relevant messages.
+    """
     # Determine which endpoint the client is attempting to use
     match escape(endpoint):
         case "createaccount":
             try:
                 content = request.get_json(silent=False)
 
+                # Attempt to create a new account
                 result = accountCreate(content['username'], content['password'], content['email'], content['role'])
 
                 if result[0]:
+                    # Account creation successful, return token
                     responseData = {
                         "Token": result[1],
                         "Error": None,
                         "ErrorMessage": None
                     }
                 else:
+                    # Account creation failed
                     responseData = {
                         "Token": None,
                         "Error": "The server was unable to create the account!",
@@ -44,16 +59,17 @@ def auth_api_routing(endpoint):
             try:
                 content = request.get_json(silent=False)
 
+                # Attempt login
                 result = accountLogin(content['username'], content['password'])
                 if result[0]:
-                    # Returns JSON with token for the user.
+                    # Login successful, returns JSON with token for the user.
                     responseData = {
                         "Token": result[1],
                         "Error": None,
                         "ErrorMessage": None
                     }
                 else:
-                    # A token was not able to be created!
+                    # Login failed, a token was not able to be created!
                     responseData = {
                         "Token": None,
                         "Error": "The server was unable to log into the account!",
@@ -80,6 +96,18 @@ def auth_api_routing(endpoint):
 # Handle all Get API endpoint routing
 @app.route("/api/get/<endpoint>")
 def get_api_routing(endpoint):
+    """
+    Handle all GET API requests.
+
+    This function routes requests to specific endpoints to retrieve data,
+    such as information about professors or labs.
+
+    Args:
+        endpoint (str): The specific endpoint to be handled.
+
+    Returns:
+        JSON: Response data including success status and relevant data.
+    """
     target = escape(endpoint)
     name = request.args.get('name') # Name of either the lab or professor
 
