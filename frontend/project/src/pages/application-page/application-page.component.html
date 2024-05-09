@@ -1,48 +1,55 @@
 <div class="application">
     <mat-card class="application-card">
-        <div class="application-content">
+        <form class="application-content" [formGroup] = "createAppForm" appearance="outline">
             <h1 class="application-title" style="color: rgb(131, 122, 122);">
                 Application Form
             </h1>
 
             <div class="app-field-1">
-                <mat-form-field class = "first-name" appearance="outline">
+                <mat-form-field class = "first-name" appearance="outline" >
                     <mat-label> First Name </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput required formControlName="firstName">
                 </mat-form-field>
                 <mat-form-field class = "last-name" appearance="outline">
                     <mat-label> Last Name </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput required formControlName="lastName">
                 </mat-form-field>
                 <mat-form-field class = "email" appearance="outline">
                 <mat-label> Email Address </mat-label>
-                <input matInput placeholder="student@umass.edu" ng-required="True">
+                <input matInput placeholder="student@umass.edu" required formControlName="emailAddress">
                 </mat-form-field>
             </div>
 
             <div class="app-field-2">
                 <mat-form-field class = "major" appearance="outline">
                     <mat-label> Major </mat-label>
-                    <input matInput ng-required="True">
+                    <input matInput required formControlName="major">
                 </mat-form-field>
                 <mat-form-field class = "phone-num" appearance="outline">
                     <mat-label>Phone number</mat-label>
-                    <input matInput placeholder="XXX-XXX-XXXX" ng-required="True">
+                    <input matInput placeholder="XXX-XXX-XXXX" required formControlName="phoneNumber">
                 </mat-form-field>
                 <mat-form-field class = "grad-year" appearance="outline">
                     <mat-label> Graduation Month/Year </mat-label>
-                    <input matInput placeholder="Spring 2026" ng-required="True">
+                    <input matInput placeholder="Spring 2026" required formControlName="gradDate">
                 </mat-form-field>
             </div>
             <div>
                 <mat-form-field class="app-comment-box" appearance="outline">
                     <mat-label> Comments </mat-label>
-                    <textarea rows="8" matInput placeholder="Write any comments here." ng-required="True"> </textarea>
+                    <textarea rows="8" matInput placeholder="Write any comments here." required formControlName="comments"> </textarea>
                 </mat-form-field>
             </div>
             <div>
-                <button mat-fab extended class="upload-resume"> Upload Resume</button>
-                <button mat-fab extended class="upload-cover-letter"> Upload Cover Letter</button>
+                <button mat-fab extended  (click)="fileInput.click()" class="upload-resume"> 
+                    <span>Upload Resume</span>
+                    <input #fileInput required type="file" (change)="onFileSelected($event)" style="display:none"/>
+                </button>
+
+                <button mat-fab extended class="upload-cover-letter" (click)="fileInput.click()"> 
+                    <span> Upload Cover Letter </span>
+                    <input #fileInput required type="file" (change)="onFileSelected($event)" style="display:none"/>
+                </button>
             </div>
             <div class="space">
 
@@ -50,7 +57,7 @@
             <div>
                 <button mat-fab extended class="submit-application"> Submit Application</button>
             </div>
-        </div>
+        </form>
     </mat-card>
         
     <mat-card class="position-info">

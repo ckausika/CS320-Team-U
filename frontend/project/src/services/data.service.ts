@@ -4,6 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import { Observable, catchError } from 'rxjs';
 import { SignUpInput, Parameter, LogInInput } from '../models/requests';
 import { User } from '../models/user';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -89,4 +90,13 @@ export class DataService {
     });
     return obs;
   }
+
+  submitOpp(payload: FormGroup) {
+    this.post('/post/create/opportunity', payload);
+  }
+
+  submitApp(payload:FormGroup) {
+    this.post('/post/create/application',payload);
+  }
+
 }
