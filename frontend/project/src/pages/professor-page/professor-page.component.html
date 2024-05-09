@@ -1,9 +1,9 @@
 <div class="professor-container">
     <mat-form-field appearance="outline" class="search-field">
-        <mat-label>Search</mat-label>
+        <mat-label>Find a professor</mat-label>
         <input matInput #searchInput placeholder="Enter a professor name" (keydown.enter)="onSearch(searchInput.value)">      
         <button mat-icon-button matSuffix (click)="onSearch(searchInput.value)">
-          <mat-icon>search</mat-icon>
+            <mat-icon>search</mat-icon>
         </button>
     </mat-form-field>
     <mat-progress-spinner *ngIf="isLoading" mode="indeterminate" class="spinner"></mat-progress-spinner>

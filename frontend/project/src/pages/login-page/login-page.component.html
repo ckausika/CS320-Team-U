@@ -14,7 +14,7 @@
                 </button>
             </mat-form-field>
             <p class="error-text">{{ error }}</p>
-            <button mat-flat-button (click)="login()" class="login-button">Log in</button>
+            <button mat-flat-button (click)="login()" [disabled]="loading" class="login-button">Log in</button>
         </div>
     </mat-card>
 </div>

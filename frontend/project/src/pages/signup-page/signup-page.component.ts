@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DataService } from '../../services/data.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-signup-page',
@@ -23,8 +24,9 @@ export class SignUpPageComponent {
   rePassword = '';
   role = '';
   error = '';
+  loading = false;
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   signup() {
     if (!this.username) {
@@ -46,8 +48,24 @@ export class SignUpPageComponent {
         password: this.password,
         role: this.role
       };
-      console.log(payload);
-      console.log(this.dataService.signUp(payload));
+      this.loading = true;
+      this.dataService.signUp(payload).subscribe({
+        next: (value) => {
+          this.loading = false;
+          if (value.Token) {
+            this.dataService.user = jwtDecode(value.Token);
+            this.router.navigate(['']);
+          } else {
+            this.error = value.ErrorMessage;
+            console.log(value.Error)
+          }
+        },
+        error: (err) => {
+          this.loading = false;
+          this.error = "Server error.";
+          console.log(err);
+        }
+      });
     }
   }
 }

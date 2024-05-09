@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
@@ -24,5 +23,9 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.dataService.fetchLabData();
     this.dataService.fetchProfessorData();
+  }
+
+  logOut() {
+    this.dataService.user = undefined;
   }
 }

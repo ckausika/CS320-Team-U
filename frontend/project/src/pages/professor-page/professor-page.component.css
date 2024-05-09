@@ -6,8 +6,8 @@
 }
 
 .search-field {
-    width: 320px;
-    margin: 10px auto -1.25em auto;
+    width: 360px;
+    margin: 12px auto -14px auto;
 }
 
 .spinner {
@@ -20,14 +20,15 @@
     display: flex;
     align-content: flex-start;
     flex-wrap: wrap;
+    width: calc(100% - 96px);
+    margin: auto 48px;
     overflow-y: auto;
-    margin: 4px;
     flex-grow: 1;
 }
 
 .professor {
-    flex-basis: calc(33.33% - 8px);
-    margin: 4px;
+    flex-basis: calc(50% - 12px);
+    margin: 6px;
 }
 
 .card {
@@ -43,13 +44,13 @@
     display: flex;
     flex-grow: 1;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 32px;
 }
 
 .profile-img {
     height: 100px;
     width: 100px;
-    padding-right: 8px;
+    padding-right: 16px;
 }
 
 .card-info {
@@ -63,17 +64,15 @@
     display: flex;
     height: 168px;
     align-items: flex-start;
-    padding: 0px 16px;
+    padding-right: 16px;
 }
 
 @media (max-width: 1000px) {
+    .professors {
+        width: calc(100% - 24px);
+        margin: auto 12px;
+    }
     .professor {
         flex-basis: calc(100% - 8px);
-    }
-}
-
-@media (min-width: 1001px) and (max-width: 1450px) {
-    .professor {
-        flex-basis: calc(50% - 8px);
     }
 }

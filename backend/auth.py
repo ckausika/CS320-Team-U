@@ -68,15 +68,18 @@ def accountCreate(username, password, email, role):
 # Login to an account given a username and password
 def accountLogin(username, password):
     loweredName = username.lower()
-    foundAccount = get_user_by_username(loweredName)
+    try:
+        foundAccount = get_user_by_username(loweredName)
 
-    # Account with specified username does not exist in the DB
-    if foundAccount is None:
-        return False, "INVALID"
+        # Account with specified username does not exist in the DB
+        if foundAccount is None:
+            return False, "INVALID"
 
-    if(determineHashMatch(foundAccount[0]["Pwd"], password)):
-        # If the two passwords match then generate a token and send to the user!
-        return True, generateToken(username, foundAccount[0]["Email"], foundAccount[0]["Role"])
-    else:
-        # If the password is not correct then return false!
+        if(determineHashMatch(foundAccount[0]["Pwd"], password)):
+            # If the two passwords match then generate a token and send to the user!
+            return True, generateToken(username, foundAccount[0]["Email"], foundAccount[0]["Role"])
+        else:
+            # If the password is not correct then return false!
+            return False, "INVALID"
+    except:
         return False, "INVALID"
