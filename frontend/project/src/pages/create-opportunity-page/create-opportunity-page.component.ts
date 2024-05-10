@@ -4,10 +4,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule, MatFormField} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
-import { RouterLink } from '@angular/router';
+import { RouterLink} from '@angular/router';
 import { FormControl, ReactiveFormsModule, FormGroup } from '@angular/forms';
-import { HttpClientModule, HttpClient} from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-create-opportunity-page',
@@ -28,20 +27,10 @@ export class CreateOpportunityPageComponent {
     location : new FormControl(''),
     jobDescription : new FormControl(''),
   });
-  
-  readonly ROOT_URL = 'http://localhost:5000/api'
-  constructor(private http: HttpClient) {
 
-  }
-  getFormInfo():Observable<any> {
-    console.log(this.createOppForm.value) // LETS GOOOOO IT WORKED WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    // CHECK FOR NULL VALUES AND CHECK VALIDATION --> CHECK DOCS FOR HOW TO VALIDATE, BUT FOR NOW
-    return this.http.post(`${this.ROOT_URL}/put/opp-form`,this.createOppForm.value).pipe(
-      catchError((error) => {
-        console.error('Error making HTTP request', error);
-        return error;
-      })
-    )
+  constructor(private dataService: DataService) {}
+  getFormInfo() {
+    this.dataService.submitOpp(this.createOppForm);
   }
 }
 

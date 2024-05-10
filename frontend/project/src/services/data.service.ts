@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
 import { SignUpInput, Parameter, LogInInput } from '../models/requests';
 import { User } from '../models/user';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -74,4 +75,13 @@ export class DataService {
   logIn(payload: LogInInput) {
     return this.post('/auth/login', payload);
   }
+
+  submitOpp(payload: FormGroup) {
+    this.post('/post/create/opportunity', payload);
+  }
+
+  submitApp(payload:FormGroup) {
+    this.post('/post/create/application',payload);
+  }
+
 }
