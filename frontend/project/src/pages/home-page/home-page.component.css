@@ -21,7 +21,30 @@
 .paragraph{
     display:flex;
 }
+.frontend-team{
+    width:50vw;
+    height: 100px;
+    float: left;
+    text-align: center;
+    font-size: large;
+}
+.frontend-team h3{
+    font-weight: bold;
+    font-size: 30px;
+}
+.backend-team{
+    width: 50vw;
+    height: 100px;
+    float: right;
+    text-align: center;
+    font-size: large;
+}
+.backend-team h4{
+    font-weight: bold;
+    font-size: 30px;
+}
 .info{
+   margin-top: 15%;
     height: 25%;
     background-color: #891D1D;
     display:flex;
