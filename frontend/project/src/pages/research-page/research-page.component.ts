@@ -18,14 +18,7 @@ import { SharedService } from '../../services/shared.service';
   styleUrl: './research-page.component.css'
 })
 export class ResearchPageComponent {
-  opportunity: any[] = [{yourTitle : "MR.",
-  firstName : "Shrey",
-  lastName : "Baha",
-  emailAddress : "bahashrey@gmail",
-  jobTitle : "Full stack role",
-  expectedHours : "9-5",
-  location : "bake",
-  jobDescription : "hello"}];
+  opportunity: any[] = [];
   visibleOpportunity: any[] = [];
   currentOpportunity:any
   isLoading = false;
@@ -35,13 +28,15 @@ export class ResearchPageComponent {
 
   ngOnInit() {
     this.isLoading = true;
-    this.dataService.fetchProfessorData().subscribe(data => {
+    this.dataService.fetchLabData().subscribe(data => {
       this.opportunity = data.Data;
+      console.log(data.Data)
       this.updateVisibleOpportunity(0, 6);
+      this.currentOpportunity = this.visibleOpportunity[0]
       this.isLoading = false;
     });
-    this.updateVisibleOpportunity(0, 6);
-     this.visibleOpportunity.length !== 0 ? this.currentOpportunity = this.visibleOpportunity[0]: this.currentOpportunity = "NA"
+    this.visibleOpportunity.length !== 0 ? this.currentOpportunity = this.visibleOpportunity[0]: this.currentOpportunity = "NA"
+    
   }
 
   changePage(event: PageEvent) {

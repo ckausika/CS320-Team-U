@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -12,7 +13,7 @@ import { SharedService } from '../../services/shared.service';
 @Component({
   selector: 'app-application-page',
   standalone: true,
-  imports: [RouterLink, MatCardModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDividerModule,MatFormField, ReactiveFormsModule],
+  imports: [CommonModule, RouterLink, MatCardModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDividerModule,MatFormField, ReactiveFormsModule],
   templateUrl: './application-page.component.html',
   styleUrl: './application-page.component.css'
 })

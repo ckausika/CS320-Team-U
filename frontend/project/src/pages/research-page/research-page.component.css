@@ -3,6 +3,7 @@
   height: 100%;
   width: 100%;
   background-color:#f9f9f9	;
+  overflow: hidden;
 }
 .research-header{
   background-color: #940a00;
@@ -21,7 +22,9 @@
 }
 .research-content{
   background-color: azure;
-  height: 100%
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 .research-paginator{
   background-color: #940a00;
@@ -43,9 +46,7 @@
   background-color: lightgray;
   text-align: left;
   height: 27%;
-  justify-content: space-between;
-  flex-direction: column;
-  display: flex;
+  overflow-y: scroll;
 }
 .research-display-title1{
   color: azure;
@@ -60,7 +61,10 @@
 .research-display-content{
   background-color: azure;
   margin-right: 20%;
-  height: 100% 
+  height: 100%;
+  margin-top: 3%;
+  justify-content: space-between;
+  flex-direction: column;
 }
 .opportunity{
   margin-top: 5%;
@@ -80,12 +84,18 @@
 .opportunity-content{
   background-color: lightgray;
   height: 60px;
+  display: flex;
+  overflow: scroll;
+  overflow-x: hidden;
 }
 .apply-button{
   background-color: #940a00;
   color: azure;
   height: 40px;
   box-shadow: none;
+  position: absolute;
+  top: 90%;
+  left: 80%;
   
 }
 .btn{
@@ -94,5 +104,9 @@
   background-color: azure;
 }
 .info{
+  margin-bottom: 2%;
+  font-size: smaller;
+}
+.info2{
   margin-bottom: 2%;
 }
