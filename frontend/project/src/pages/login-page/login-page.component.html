@@ -8,7 +8,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="login-item" style="margin-bottom: -1.25em">
                 <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required>
+                <input matInput [type]="hide ? 'password' : 'text'" [(ngModel)]="password" required (keydown.enter)="login()">
                 <button mat-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" [disableRipple]="true">
                     {{hide ? "show" : "hide"}}
                 </button>
