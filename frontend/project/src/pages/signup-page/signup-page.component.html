@@ -8,7 +8,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline" class="signup-item">
           <mat-label>Enter your school email</mat-label>
-          <input matInput placeholder="student@umass.edu" [(ngModel)]="email" required>
+          <input matInput placeholder="student@umass.edu" required type="email" ngModel email="true">
         </mat-form-field>
         <div style="display: flex;">
           <mat-form-field appearance="outline" class="signup-item" style="margin-right: 10px;">

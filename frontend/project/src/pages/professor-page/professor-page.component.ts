@@ -28,7 +28,7 @@ export class ProfessorPageComponent implements OnInit {
     this.isLoading = true;
     this.dataService.fetchProfessorData().subscribe(data => {
       this.professors = data.Data;
-      this.updateVisibleProfessors(0, 15);
+      this.updateVisibleProfessors(0, 10);
       this.isLoading = false;
     });
   }
@@ -37,7 +37,7 @@ export class ProfessorPageComponent implements OnInit {
     this.isLoading = true;
     this.dataService.fetchProfessorData([{ param: 'name', value: value }]).subscribe(data => {
       this.professors = data.Data;
-      this.updateVisibleProfessors(0, 15);
+      this.updateVisibleProfessors(0, 10);
       this.isLoading = false;
     });
   }
