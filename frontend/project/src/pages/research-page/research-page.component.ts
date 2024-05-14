@@ -18,7 +18,14 @@ import { SharedService } from '../../services/shared.service';
   styleUrl: './research-page.component.css'
 })
 export class ResearchPageComponent {
-  opportunity: any[] = [];
+  opportunity: any[] = [{yourTitle : "MR.",
+  firstName : "Shrey",
+  lastName : "Baha",
+  emailAddress : "bahashrey@gmail",
+  jobTitle : "Full stack role",
+  expectedHours : "9-5",
+  location : "bake",
+  jobDescription : "hello"}];
   visibleOpportunity: any[] = [];
   currentOpportunity:any
   isLoading = false;
