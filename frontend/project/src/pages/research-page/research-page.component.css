@@ -32,6 +32,7 @@
   width: 550px;
   margin-top: 4%;
   margin-right: 13%;
+  background-color: azure;
 }
 .research-display-header1{
   background-color: #940a00;
@@ -54,10 +55,12 @@
 .research-display-title2{
   color: rgb(0, 0, 0);
   font-weight: 400;
+  
 }
 .research-display-content{
   background-color: azure;
-  height: 100%
+  margin-right: 20%;
+  height: 100% 
 }
 .opportunity{
   margin-top: 5%;
@@ -83,8 +86,13 @@
   color: azure;
   height: 40px;
   box-shadow: none;
+  
 }
 .btn{
   justify-content: flex-end;
   display: flex;
+  background-color: azure;
+}
+.info{
+  margin-bottom: 2%;
 }

@@ -62,38 +62,19 @@
         
     <mat-card class="position-info">
         <h1 class="position-title" style="color: rgb(131, 122, 122);">
-            Opportunity Title
+            {{message.jobTitle}}
         </h1>
         <h3 style="color: rgb(131, 122, 122);">
-            Professor Name
+            Professor: {{message.yourTitle}} {{message.firstName}} {{message.lastName}}
         </h3>
         <h3 style="color: rgb(131, 122, 122);">
-            Expected Hours
+            Expected Hours: {{message.expectedHours}}
         </h3>
         <h3 style="color: rgb(131, 122, 122);">
-            Location
+            Location: {{message.location}}
         </h3>
         <h5 style="color: rgb(131, 122, 122);">
-            Insert Description here... 
-            <br>
-            -
-            <br>
-            -
-            <br>
-            -
-            <br>
-            -
-            <br>
-            -
-            <br>
-            -
-            <br>
-            -
-            <br>
-            -
-            <br>
-            -
-            <br>
+            {{message.jobDescription}}
         </h5>
         <div class="white-space">
 
