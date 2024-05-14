@@ -60,7 +60,7 @@
         </form>
     </mat-card>
         
-    <mat-card class="position-info">
+    <mat-card class="position-info" *ngIf="message.firstName !== undefined">
         <h1 class="position-title" style="color: rgb(131, 122, 122);">
             {{message.jobTitle}}
         </h1>
@@ -75,6 +75,21 @@
         </h3>
         <h5 style="color: rgb(131, 122, 122);">
             {{message.jobDescription}}
+        </h5>
+        <div class="white-space">
+
+        </div>
+        <button mat-fab extended class="change-job" routerLink="/research"> Change Job</button>
+    </mat-card>
+    <mat-card class="position-info" *ngIf="message.Desc !== undefined">
+        <h1 class="position-title" style="color: rgb(131, 122, 122);">
+            {{message.Name}}
+        </h1>
+        <h3 style="color: rgb(131, 122, 122);">
+            Staff: {{message.Staff}}
+        </h3>
+        <h5 style="color: rgb(131, 122, 122);">
+            {{message.Desc}}
         </h5>
         <div class="white-space">
 

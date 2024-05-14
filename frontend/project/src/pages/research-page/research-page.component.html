@@ -8,7 +8,7 @@
     <mat-card-content class = "research-content">
 
       <div *ngFor="let opportunities of visibleOpportunity">
-      <mat-card class="opportunity" (click)="setOpportunity(opportunities)">
+      <mat-card class="opportunity" (click)="setOpportunity(opportunities)" *ngIf="currentOpportunity.firstName !== undefined">
         <mat-card-header class="opportunity-header">
           <mat-card-title class="opportunity-title">
             {{opportunities.jobTitle}} 
@@ -20,13 +20,23 @@
           <p class="info">Expected Hours: {{opportunities.expectedHours}}</p>
         </mat-card-content> 
       </mat-card>
+      <mat-card class="opportunity" (click)="setOpportunity(opportunities)" *ngIf="currentOpportunity.Desc !== undefined">
+        <mat-card-header class="opportunity-header">
+          <mat-card-title class="opportunity-title">
+            {{opportunities.Name}} 
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class = opportunity-content>
+          <p class="info">Staff: {{opportunities.Staff}}</p> 
+        </mat-card-content> 
+      </mat-card>
       </div>
 
     </mat-card-content>
     <mat-paginator class = research-paginator  [length]="opportunity.length" [pageSize]="6" (page)="changePage($event)">
     </mat-paginator>
   </mat-card>
-  <mat-card class = "research-display">
+  <mat-card class = "research-display" *ngIf="currentOpportunity.firstName !== undefined">
     <mat-card-header class = "research-display-header1">
       <mat-card-title class = research-display-title1>
         {{currentOpportunity.jobTitle}}
@@ -42,14 +52,37 @@
         <h3 class = "info">Expected Hours: {{currentOpportunity.expectedHours}}</h3>
         <h3 class = "info">Email Address: {{currentOpportunity.emailAddress}}</h3>
       </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class = research-display-content>
+      {{currentOpportunity.jobDescription}}
+      <div class="btn">
+        <button mat-fab extended class = "apply-button" routerLink="/application" (click)="newMessage()">
+          Apply
+        </button>
+        </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class = "research-display" *ngIf="currentOpportunity.Desc !== undefined">
+    <mat-card-header class = "research-display-header1">
+      <mat-card-title class = research-display-title1>
+        {{currentOpportunity.Name}}
+      </mat-card-title>
+      <mat-card-title class = "research-display-title1" *ngIf="currentOpportunity === 'NA'">
+        No Research Title
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-header class = "research-display-header2">
+      <mat-card-title class = "research-display-title2">
+        <h3 class = "info2">Staff: {{currentOpportunity.Staff}}</h3>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class = research-display-content>
+      {{currentOpportunity.Desc}}
       <div class="btn">
       <button mat-fab extended class = "apply-button" routerLink="/application" (click)="newMessage()">
         Apply
       </button>
       </div>
-    </mat-card-header>
-    <mat-card-content class = research-display-content>
-      {{currentOpportunity.jobDescription}}
     </mat-card-content>
   </mat-card>
 </div>
