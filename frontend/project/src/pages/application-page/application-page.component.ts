@@ -7,6 +7,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import { RouterLink } from '@angular/router';
 import { FormControl, ReactiveFormsModule, FormGroup } from '@angular/forms';
 import { DataService } from '../../services/data.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-application-page',
@@ -26,7 +27,8 @@ export class ApplicationPageComponent {
     comments : new FormControl(''),
   });
   fileName=""
-  constructor(private dataService: DataService) {}
+  message:any;
+  constructor(private dataService: DataService, private shared: SharedService) {}
   getFormInfo() {
     this.dataService.submitOpp(this.createAppForm);
   }
@@ -43,5 +45,7 @@ export class ApplicationPageComponent {
     }
   
   }
-
+  ngOnInit(){
+    this.shared.currentMessage.subscribe(message => this.message = message);
+  }
 }
